@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/bgScroll3.0/bgScroll.css" rel="stylesheet" type="text/css" />
+    <style>
+    #bgscroller {width:1512px;}/*图片宽度*/
+    #scroll{position: absolute;left: 0px;top: 0px;}
+    body{
+        /*background:url(http://192.168.50.82/2013/ipad/jiaju/9yue/sugelan/07.jpg)no-repeat;width: 768px;height: 1024px;background-size: 768px 1024px; */
+    }
+    </style>
+    </head>
+    <title>外国人家1-远离苏格兰\p2</title>
+<body>
+    <div id="view">
+        <!-- 背景滚动 -->
+        <div id="bgScrollWrap">
+            <div id="bgscroll" class="button">
+                <div id="bgscroller">
+                    <img src="images/02_01.jpg" height="256">
+                    <img src="images/02_02.jpg" height="256">
+                    <img src="images/02_03.jpg" height="256">
+                    <img src="images/02_04.jpg" height="256">
+                </div>
+            </div>
+            <img src="images/01.png" id="frontImg">
+            <div id="bgScroll_centre">左右滑动图片<br />点击返回</div>
+        </div>
+        <div id="bgScroll_button" class="public_btn button   bigImg_btn rt1"><div><span></span></div></div>
+        <div id="bgScroll_prompt" class="public_prompt  dowm rt1">查看全图<span></span></div>
+
+        <div id="scroll">
+            <ul>
+                <li></li>
+                <li ><img src="images/03.png" width='768' ></li>
+            </ul>
+        </div>
+     </div>
+    <!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script src="../../html-common/pchouse2.0/bgScroll3.0/bgScroll.js"></script>
+<script>
+$(document).ready(function () {
+    var bgScroll1;
+    bgScroll1 = new bgScroll({
+        beforeLeft: -371, //自动滚动之前的坐标
+        startLeft: -371, //自动滚动后的坐标
+        autoTime: 0, //当前页面滚动的时间 0为不自动滚动
+        start: function () {
+            $('#scroll').hide();
+            $('#showBigImg').hide();
+        }, //进入全屏大图时候函数
+         end: function () {
+            $('#scroll').show();
+            $('#showBigImg').show();
+         } //退出全屏大图时候函数
+    });
+
+    var myscroll;
+    myscroll = new iScroll("scroll", {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        vScrollbar: false,
+    },'view');
+    
+});
+</script>
+
+</html>

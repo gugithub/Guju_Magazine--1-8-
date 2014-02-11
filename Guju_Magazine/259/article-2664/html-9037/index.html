@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <style>
+    img{-webkit-backface-visibility:hidden;}
+    #con{position: absolute;left: 0px; bottom: 0px;-webkit-transform:translateY(354px);-webkit-transition:all 0.5s;opacity: 0;-webkit-backface-visibility:hidden;}
+    #con.show{-webkit-transform:translateY(0px);opacity: 1;}
+    #tit{position: absolute;left: 575px;bottom:309px;}
+    #weibo{position: absolute;left:300px;top:50px;width: 170px;height: 60px;/*background: red;opacity: 0.5;*/}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="con">
+            <img src="images/02.jpg" width='768' alt="">
+            <div id="weibo" class='button' data-href='http://weibo.com/AXDESIGNGROUP#custombrowser'></div>
+        </div>
+        <div class="public_btn button big" style=" left:530px; bottom:309px;" id='public_btn'><div><span></span></div></div>
+        <img src="images/01.png" width='98' alt="" id="tit">
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#public_btn').tap(function(){
+            $('#public_btn').toggle('close_btn');
+            $('#public_btn').toggle('active');
+            $('#con').toggle('show');
+        })
+    });
+</script>
+</html>

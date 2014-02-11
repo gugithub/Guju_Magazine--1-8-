@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <style>
+    #view{background: url(bg.jpg);background-size:768px 1024px;}
+    #con{position:absolute; left:26px; top:181px;}
+    #con>li{position:absolute;left:0px; top:0px;-webkit-transition:all 0.5s linear; opacity:0;}
+    #con>li.current{opacity:1;}
+    #con>li>img{position:absolute;}
+
+    
+    
+    #nav{position:absolute;left:26px;top:112px;width:209px;  width: 768px }
+    #nav>li{ float: left; width: 240px; height: 68px; position: relative;}
+    #nav>li>img{position: absolute;left:115px; bottom:0;-webkit-transition:-webkit-transform 0.5s;}
+    #nav>li.current>img{-webkit-transform:translate(0,13px);}
+ 
+    
+    </style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+    <ul id="con">
+        <li class="current"></li> 
+        <li><img src="images/4.jpg" width="720" ></li>
+        <li><img src="images/5.jpg" width="720" ></li>
+    </ul>
+    <ul id="nav" class="button">
+        <li class="current"><img src="images/1.png" width="29" ></li>
+        <li><img src="images/2.png" width="29" ></li>
+        <li><img src="images/3.png" width="29" ></li>
+   
+    </ul>
+
+    <div class="button" data-href="http://bbs.pchouse.com.cn/forum-6.html#custombrowser" style="position:absolute; width:100px; height:100px;left:580px; top:915px;"></div>
+
+    
+</div>
+<!-- end view -->
+</body>
+
+	<!--<script src="../../html-common/pcauto.js"></script>
+	<script src="../../html-common/magazine.js"></script>-->
+
+    <script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+$(document).ready(function(){
+
+	// -------------------- variable --------------------
+    var $navLi=$("#nav>li"),
+        $conLi=$("#con>li");
+        
+     $navLi.each(function(e,i){
+         $(e).tap(function(){
+         	$(this).addClass("current").siblings().removeClass("current");
+            $($conLi.dom[i]).addClass("current").siblings().removeClass("current");
+            
+         })
+     })  
+
+
+        
+        
+      
+        
+});
+</script>
+
+
+
+
+
+</html>

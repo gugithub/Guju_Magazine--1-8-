@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title>全屏滚动</title>
+    <style>
+    #view{pointer-events:none;-webkit-transition:all 0.8s;}
+    #view.change{pointer-events:auto;}
+  
+    #scroll{position: absolute;left: 0px;top: 0px;}
+    #bg{position: absolute;left:0px;top:0px;width: 100%;height: 100%;-webkit-perspective:2500;}
+    #bg .item{position: absolute;width: 339px;height: 350px; -webkit-transform-style:preserve-3d;}
+    #bg .item:nth-child(1){left: 40px;top: 80px;}
+    #bg .item:nth-child(2){left: 389px;top: 80px;}
+    #bg .item:nth-child(3){left: 40px;top: 634px;}
+    #bg .item:nth-child(4){left: 389px;top: 634px;}
+    #bg .item img{position: absolute;-webkit-backface-visibility:hidden;  top: 0; left: 0;-webkit-transform-style:preserve-3d; }
+    .change .item{ -webkit-transition:all 2s; -webkit-transform: rotateY(180deg);}
+    .front{-webkit-transform: rotateY(0deg);}
+    .back{-webkit-transform: rotateY(180deg);}
+    
+    #page{position: absolute;left: 0px;top: 0px;pointer-events:none; background: #fff; opacity:0; }
+   .change #page{opacity:1;-webkit-transition:opacity 1s linear ;}
+    #tit{ position: absolute;left: 0;top:0; width: 100%; height: 100%;-webkit-transform: rotateY(0deg); -webkit-transform-style:preserve-3d; }
+     .change #tit{ -webkit-transition:all 2s; -webkit-transform: rotateY(180deg);  }
+
+   #tb{ background: url(images/p1-02.png); background-size: 768px 1024px;  width: 100%; height: 100%; position: absolute; -webkit-transform-style:preserve-3d; position: absolute;; left: 0; top: 0 ;-webkit-backface-visibility:hidden; }
+   #tb>img{ position: absolute;  top: 0; left: 0}
+
+  .change #t1{ -webkit-transform:translate3d(0,100px,0); opacity:0;-webkit-transition:all 0.5s 2.5s; -webkit-backface-visibility:hidden; }
+#t2{-webkit-transform:translate3d(0,100px,0); opacity:0;-webkit-backface-visibility:hidden; }
+ .change #t2{ -webkit-transform:translate3d(0,0px,0); opacity:1;-webkit-transition:all 1s 3s;}
+
+    </style>
+</head>
+<body>
+<div id="view">
+    <img  src="images/page-b.png" width="768" id="page">   
+    <div id='bg'>
+        <div class='item'>
+            <img src='images/11.jpg' width='339' class='back' />
+            <img src='images/1.jpg' width='339' class='front' />
+        </div>
+        <div class='item'>
+            <img src='images/22.jpg' width='339' class='back' />
+            <img src='images/2.jpg' width='339' class='front' />
+            
+        </div>
+        <div class='item'>
+            <img src='images/33.jpg' width='339' class='back' />
+            <img src='images/3.jpg' width='339' class='front' />
+            
+        </div>
+        <div class='item'>
+            <img src='images/44.jpg' width='339' class='back' />
+            <img src='images/4.jpg' width='339' class='front' />
+            
+        </div>
+    </div>
+    <div id="scroll">
+        <ul>
+            <li>
+                <div id="tit">
+                    <div id="tb" class="back">
+                           <img id="t1" src="images/p1-04.png" width="768" >
+                           <img id="t2" src="images/p1-05.png" width="768" > 
+                    </div>
+                    <img src="images/p1-01.png" width="768"  style="poaition:absolute; left:0; top:0;-webkit-backface-visibility:hidden; ">
+                    
+                </div>
+            </li>
+            <li>
+                <img src="images/p1-03.png" width="768" >
+            </li>
+        </ul>
+    </div>
+
+
+
+</div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+var myscroll
+    $view = $("#view");
+$(document).ready(function(){ 
+    myscroll = new iScroll("scroll", {
+        snap:true,
+        momentum: false,
+        hScrollbar: false,
+        vScrollbar: false,
+    });
+
+    Magazine.addEvent(1,function(){
+        setTimeout(function(){
+            $view.addClass('change');
+            setTimeout(function(){
+
+            },500);
+        },2000);
+        
+    });
+    Magazine.addEvent(0,function(){
+        $view.removeClass('change');
+        myscroll.scrollTo(0,0,0);
+
+    });
+})
+</script>
+</html>

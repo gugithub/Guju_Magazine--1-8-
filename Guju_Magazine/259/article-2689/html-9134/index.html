@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title>全屏滚动</title>
+    <style>
+    /*#view{background: url(010.jpg);background-size: 768px 1024px}*/
+    #container{position: absolute;left: 0px;bottom: 0px;width: 768px;height: 712px;}
+    #container img{position: absolute;left: 0px;top: 0px;opacity: 0;-webkit-transition:opacity 1s;}
+    #container img.current{opacity: 1;}
+    #control{width: 180px;height: 120px;position: absolute;right: 0px;bottom: 0px}
+    #control div{width: 60px;height: 60px;position: absolute;/*background: rgba(165,231,156,0.5);*/}
+    #left{left: 20px;top: 30px;}
+    #right{left: 90px;top: 30px;}
+
+    #page{width: 200px;height: 120px;position: absolute;right: 0px;bottom: 0px;z-index: 2;pointer-events:none;}
+    </style>
+</head>
+<body>
+<div id="view">
+    <div id='container'>
+        <img src='images/p4-01.jpg' width='768' class='current'/>
+        <img src='images/p4-02.jpg' width='768' />
+        <img src='images/p4-03.jpg' width='768' />
+    </div>
+    <div id='control'>
+        <div class='button' id='left'></div>
+        <div class='button' id='right'></div>
+    </div>
+    <div id="page"><img src="images/page.jpg" width="200"></div>
+    <div class="public_prompt up" style='left:660px;top:900px;z-index:100'>点击查看更多<span></span></div>
+</div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script>
+    $(document).ready(function(){
+        var cur=1;
+        $('#left').tap(function(){
+            $('.public_prompt').hide();
+
+            if(cur<=1){
+                cur==1;
+            }else{
+                cur-=1;
+            }
+            $('#container img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+            console.log('cur:',cur);
+        });
+
+        $('#right').tap(function(){
+            $('.public_prompt').hide();
+
+            if(cur>=3){
+                cur==3;
+            }else{
+                cur+=1;
+            }
+            $('#container img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+            console.log('cur:',cur);
+        });
+    })
+</script>
+</html>

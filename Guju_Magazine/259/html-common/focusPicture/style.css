@@ -1,0 +1,36 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{}
+#view{font:nomral 16px TrebuchetMS;position:absolute;position:absolute;overflow:hidden;}
+/* debug */
+/*.button{background:rgba(0,0,0,0.3);}*/
+
+#view{ -webkit-perspective:2000px; position:relative; width:768px; height:1024px; }
+#focusPicture_content{ position:relative; background: no-repeat left top;width:768px; height:1024px;  }
+#focusPicture_content li{ position:absolute; -webkit-transform-origin:left bottom;width:768px; height:1024px;}
+#focusPicture_content li img{ display:block; width:768px;}
+#focusPicture_content li.come{ -webkit-animation:come 0.5s;}
+#focusPicture_content li.out{  -webkit-animation:out 0.5s both;}
+@-webkit-keyframes come{
+	0%{opacity:0; }
+	100%{opacity:1;}
+}
+@-webkit-keyframes out{
+	0%{opacity:1; }
+	100%{opacity:0;}
+}
+
+
+
+#focusPicture_navWrap{position:absolute; right:20px; bottom:0px; z-index:20; padding-left:100px;}
+#focusPicture_navWrap .public_prompt{ position:absolute; left:0; top:28px; }
+#focusPicture_nav{font:24px Baskerville-BoldItalic ; color:#000; z-index:20; float:left;}
+
+#focusPicture_nav li{ float:left; width:42px; height:42px; padding:14px;}
+
+#focusPicture_nav li span{ width:42px; height:42px; display:block;  background:rgba(0,0,0,0.7);border-radius:21px; text-align:center; line-height:42px; color:#FFF; font-size:28px;-webkit-transition:all 0.3s;}
+#focusPicture_nav li.current span,#focusPicture_nav.w li.current span{background:rgba(255,91,19,0.9); color:#FFF; }
+#focusPicture_nav.w li span{background:rgba(255,255,255,0.7); color:#000;}
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/showFront/showFront.css" rel="stylesheet" type="text/css" />
+    <style>
+	   #scroll{ width:768px; height:1024px; overflow:hidden}
+	   #scroll>ul { width:768px;}
+	   #scroll li{ width:768px; height:1024px; position:relative;}
+	   #scroll li>img{ display:block; position:absolute; left:0; top:0;}
+	 
+	</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+<div id="scroll">
+    <ul>
+        <li>
+          <img src="images/01.png" width="768" >
+        </li>
+        <li>
+            
+            <img src="images/02.png" width="768" >
+        </li>
+    </ul>
+</div>
+            <div id="button" class="public_btn button question_btn rt1" ><div><span></span></div></div>
+            <div class="public_prompt dowm  rt1">向TA提问<span></span></div>
+</div>
+
+
+
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+
+
+
+
+<script>
+
+
+
+
+$(document).ready(function(){ 
+	 
+
+var myscroll;
+	myscroll = new iScroll("scroll", {
+       snap:true,
+	    momentum: false,
+	   hScrollbar: false,
+	   vScrollbar: false,
+	 });  
+
+
+   $("#button").tap(function(){
+       window.location.href="sinaweibo: #向TA提问# 《蓝绿秋色》 @Thomas_Dariel @PChouse家居杂志 "
+   })	
+})
+</script>
+
+
+</html>

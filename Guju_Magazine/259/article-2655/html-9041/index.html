@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <style>
+
+    /*scroll css*/
+    #scroll{width: 249px;height: 595px;position: absolute;left: 479px;top: 198px;opacity: 1;}
+    #scroll.hide{opacity: 0;-webkit-transition:opacity 1s;}
+
+    /*页码css*/
+    #page{position: absolute;right: 0px;bottom: 0px;opacity: 0;}
+    #page.show{opacity: 1;}
+
+    /*价格css*/
+    #price{position: absolute;left: 0px;top: 0px;pointer-events:none;opacity: 0;}
+    #price.priceshow{opacity: 1;pointer-events:auto;-webkit-transition:all 0.5s 1s;}
+
+    /*图片css*/
+    #picWrap{width: 100%;height: 100%;}
+    #picWrap.active{background: #dfdfd7;-webkit-transition:all 0.5s;}
+    #picWrap .item{position: absolute;left: 0px;top: 0px;-webkit-transition:all 0.5s 0.5s;}
+
+    #picWrap .item:nth-child(1){left: 0px;top: 91px; width: 285px;}
+    #picWrap .item:nth-child(2){left: 179px;top: 223px; width: 286px;}
+    #picWrap .item:nth-child(3){left: 195px;top: 6px; width: 256px;}
+    #picWrap .item:nth-child(4){left: 0px;top: 379px; width: 322px;}
+    #picWrap .item:nth-child(5){left: 255px;top: 435px; width: 240px;}
+    #picWrap .item:nth-child(6){left: 231px;top: 804px; width: 211px;}
+    #picWrap .item:nth-child(7){left: 20px;top: 651px; width: 264px;}
+    #picWrap .item:nth-child(8){left: 423px;top: 782px; width: 350px;height: 251px;background: url(images/09.png) no-repeat;background-size: 350px 251px;}
+
+
+    #picWrap.active .item:nth-child(1){-webkit-transform:translate(0px,-70px);}
+    #picWrap.active .item:nth-child(2){-webkit-transform:translate(68px,-184px);}
+    #picWrap.active .item:nth-child(3){-webkit-transform:translate(287px,44px);}
+    #picWrap.active .item:nth-child(4){-webkit-transform:translate(0px,19px);}
+    #picWrap.active .item:nth-child(5){-webkit-transform:translate(268px,-90px);}
+    #picWrap.active .item:nth-child(6){-webkit-transform:translate(100px,-240px);}
+    #picWrap.active .item:nth-child(7){-webkit-transform:translate(20px,22px);}
+    #picWrap.active .item:nth-child(8){-webkit-transform:translate(32px,19px);width: 350px;height: 298px;background: url(images/09-1.png) no-repeat;background-size: 350px 298px;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <!-- <img src="07.jpg" width="768" style='position:absolute;z-index:-1'> -->
+        <div id="scroll">
+            <ul>
+                <li style='height:1867px'><img src="images/0.png" height="1867"></li>
+            </ul>
+        </div>
+
+        <div id="picWrap">
+            <div class="item button"><img src="images/02.png" width="285" class=" "></div>
+            <div class="item button"><img src="images/03.png" width="286" class=" "></div>
+            <div class="item button"><img src="images/04.png" width="256" class=" "></div>
+            <div class="item button"><img src="images/05.png" width="322" class=" "></div>
+            <div class="item button"><img src="images/06.png" width="240" class=" "></div>
+            <div class="item button"><img src="images/07.png" width="211" class=" "></div>
+            <div class="item button"><img src="images/08.png" width="264" class=" "></div>
+            <div class="item button"><!-- <img src="images/09.png" width="350" class=" "> --></div>
+        </div>
+        <!-- <img src="09.jpg" width="768" style='position:absolute;top:0px;' > -->
+        <img src="images/01.png" width="768" class='button' id='price' />
+        <img src="images/page.png" width="30" style='position: absolute;right: 0px;bottom: 0px;' id='page_original' />
+        <img src="images/page-1.png" width="30" id='page' />
+        <div class="public_prompt up" style='left:60px;top:60px;'>点击图片查看更多<span></span></div>
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+    $(document).ready(function(){
+        var myscroll;
+        myscroll = new iScroll("scroll", {
+            snap:false,
+            momentum: true,
+            hScrollbar: false,
+            vScrollbar: false,
+        });
+
+        var $item=$('.item');
+        $item.tap(function(){
+            $('.public_prompt').hide();
+            $('#p_nine').attr('src','images/09-1.png')
+            $('#picWrap').addClass('active');
+            $('#scroll').addClass('hide');
+            $('#page').addClass('show');
+            $('#page_original').hide();
+            $('#price').addClass('priceshow');
+        });
+        $('#price').tap(function(){
+            $('#p_nine').attr('src','images/09.png')
+            $('#picWrap').removeClass('active');
+
+            $('#page').removeClass('show');
+            $('#page_original').show();
+            $('#price').removeClass('priceshow');
+            setTimeout(function(){
+                $('#scroll').removeClass('hide');
+            },500)
+
+        })
+    });
+</script>
+</html>

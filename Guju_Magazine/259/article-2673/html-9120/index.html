@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- 禁止用户手动缩放 -->
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<!-- 忽略将页面中的数字识别为电话号码 -->
+		<meta content="telephone=no" name="format-detection" />
+		<!-- 全屏应用模式 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="base/glideShow.css" rel="stylesheet" type="text/css" />
+    <link href="base/style.css" rel="stylesheet" type="text/css" />	
+     <link href="../../html-common/pchouse2.0/showFront/showFront.css" rel="stylesheet" type="text/css" />
+	  <script src="../../html-common/base/js/pcauto1.1.js"></script>
+	  <script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+    <script src="base/glideShow.js"></script>
+  <script src="../../html-common/pchouse2.0/showFront/showFront.js"></script>
+<style>
+#glideShowWrap{ height: 710px}
+#scroll{ height: 1024px;}
+</style>
+
+	<title>导购</title>
+</head>
+<body>
+<div id="view">
+  <!-- <img src="03.jpg" width='768' style='position:absolute;z-index:-1;pointer-events:none;' alt=""> -->
+    <div id="glideShowWrap">
+    <div id="glideShow">
+        <img src="images/03_01.jpg" width="768">
+        <img src="images/03_02.jpg" width="768">
+        <div id="scroll" style="position:absolute; left:0;top:0">
+        <ul>
+        <li>
+        </li>
+        <li>
+            <img src="images/04.png" width="768">
+        </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+
+
+    <div id="glideShow_button"  class=" button " ><span></span></div>
+
+    <img src="images/01.png" width="192" style="position:absolute; pointer-events:none; left:544px; top:30px; ">
+    <img src="images/02.jpg" width="177" style="position:absolute; pointer-events:none; left:60px; top:544px; ">
+
+
+</div><!-- end view -->
+    
+</body>
+</html>
+
+<script>
+/*    custom page logic      
+ */
+var glideShow,showFront1;
+var myscroll;
+$(document).ready(function () {
+
+// -------------------- init -------------------- 
+  glideShow = new glideShow( {
+    direction:"x",
+    startPlace:[0,0],
+    }
+   );   
+
+
+    showFront1 = new showFront( {
+    buttonId: "showFront_button",
+    start: function () {},
+    end: function () {}
+   }); 
+
+    var start=false;
+    Magazine.addEvent(1,function(){
+      if(!start)
+      {
+      start=true;
+      glideShow.goto(768,0,1);
+      glideShow.options.startPlace=[768,0];
+      $("#showFront_prompt").show();
+      }
+    })
+    Magazine.addEvent(0,function(){
+      if(start)
+      {
+      start=false;
+      glideShow.goto(0,0,0);
+      glideShow.options.startPlace=[0,0];
+      
+      }
+
+    })
+
+
+
+  myscroll = new iScroll("scroll", {
+    snap:true,
+     momentum: false,
+     hScrollbar: false,
+     vScrollbar: false,
+   },"view");  
+
+
+
+});
+</script>

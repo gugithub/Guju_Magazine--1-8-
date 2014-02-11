@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/showFront/showFront.css" rel="stylesheet" type="text/css" />
+    <style>
+	 #bg{ position:absolute; left:0; top:0; width: 768px; height:1024px;   }
+	 #bg>li{ position:absolute;  top:0;  opacity:0;}
+	 .show #bg>li{opacity:1;-webkit-transition:all 0.5s 1s linear;}
+	 #child{position: absolute;left: 93px;top: 566px}
+	</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+	<ul id="bg">
+       <li><img src="02.jpg" width="768" ></li>		    
+	</ul>
+    <div id="child"><img src="01.png" width="180"></div>
+</div>
+
+
+
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+
+
+
+
+
+<script>
+
+
+
+
+$(document).ready(function(){ 
+	 
+      start=false;
+//animationStart();  
+		Magazine.addEvent(1,function(){
+			 if(!start)
+			 {start=true;
+			  animationStart();  
+			
+			 }
+		})
+		Magazine.addEvent(0,function(){
+			 if(start)
+			 {start=false;
+			  animationEnd();  
+			
+			 }
+		})
+  function  animationStart(){
+      $("#view").addClass("show")
+
+  }  
+  function  animationEnd(){
+      $("#view").removeClass("show")
+
+  } 
+ 
+})
+</script>
+
+
+</html>

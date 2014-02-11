@@ -1,0 +1,28 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{ background:; font:14px/1.5em ; }
+/* debug */
+/*.button{background:rgba(0,0,0,0.5);}*/
+#view{ width:768px; height:1024px; overflow:hidden; position:relative;}
+#bgScroll{width:768px; height:1024px; overflow:hidden; position:absolute; pointer-events:none; }
+#bgScroll.show{ pointer-events:auto; }
+#bgScroll .prompt{ width:768px}
+#bgScroll_scroller{ position:absolute; left:0; top:0; height:1024px;-webkit-transform-style:preserve-3d;-webkit-transition-timing-function:linear; opacity:0; -webkit-transition:all 0.5s;}
+.show #bgScroll_scroller{opacity:1; -webkit-transition:all 0.5s;}
+#bgScroll_scroller img{ float: left;}
+#bgScroll_bg{width:768px; height:1024px; overflow:hidden; position:absolute; top:0; left:0; display:none; }
+.prompt{ position:absolute; display:block; width:768px; height:25px; line-height:25px;  color:#FFF; background-color:rgba(0,0,0,0.8); position:absolute; text-align:center;-webkit-transition:all 0.3s;}
+#bgScroll_top{ left:0; top:0;-webkit-transform:translate(0,-25px); border-bottom:1px solid #000;}
+#bgScroll_bottom{ right:0; bottom:0;-webkit-transform:translate(0,25px); border-top:1px solid #000;}
+
+#bgScroll_centre{ position:absolute; background-color:rgba(0,0,0,0.8); color:#FFF; border:1px solid #000; padding:10px 20px; left:45%; top:48%; text-align:center; line-height:25px; -webkit-transition:all 0.3s; opacity:0;  border-radius:5px; z-index:100; }
+
+#bgScroll_centre.show{opacity:1;}
+#bgScroll_top.show,#bgScroll_bottom.show{ -webkit-transform:translate(0,0);}
+
+
+
+
+
+

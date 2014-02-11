@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+
+    
+    <style>
+
+#view{width:768px; height:1024px; margin:0 auto;}
+
+
+#view{font:nomral 16px TrebuchetMS;position:absolute;position:absolute;overflow:hidden;}
+
+
+#view{position:relative; width:768px; height:1024px; }
+#focusPicture_content{ position:relative; background: no-repeat left top;width:768px; height:1024px;  }
+#focusPicture_content li{ position:absolute; -webkit-transform-origin:left bottom;width:768px; height:1024px; opacity:0;-webkit-transition:opacity 0.5s linear; pointer-events:none; }
+#focusPicture_content li.current{opacity:1;pointer-events:auto;}
+#focusPicture_content li img{ display:block; width:768px;}
+#focusPicture_content li span{display: block; position: absolute; left: 50px; top: 50px; width: 100px;height: 100px; /*background:  rgba(0,0,0,0.5);*/}
+
+
+
+#focusPicture_navWrap{position:absolute; right:20px; bottom:0px; z-index:20; padding-left:100px;}
+#focusPicture_navWrap .public_prompt{ position:absolute; left:0; top:28px; }
+#focusPicture_nav{font:24px Baskerville-BoldItalic ; color:#000; z-index:20; float:left;}
+
+#focusPicture_nav li{ float:left; width:42px; height:42px; padding:14px;}
+
+#focusPicture_nav li span{ width:42px; height:42px; display:block;  background:rgba(0,0,0,1);border-radius:21px; text-align:center; line-height:42px; color:#FFF; font-size:28px;font-family:HelveticaNeue-BoldItalic}
+#focusPicture_nav li.current span,#focusPicture_nav.w li.current span{background:rgba(255,255,255,0.8); color:#000; width:40px; line-height:40px; border:1px solid #000; }
+#focusPicture_nav.w li span{background:rgba(255,255,255,0.7); color:#000; }
+#focusPicture_nav_wrap{position:absolute; left:154px; top:853px; z-index:20; background:url(images/nav.png) no-repeat; background-size:190px 128px; width:282px; height:128px; padding-left:200px;border:1px solid #f0f0f0;}
+ 
+#focusPicture_nav{font:24px Baskerville-BoldItalic ; color:#000; z-index:20; float:left;}
+
+#focusPicture_nav li{ float:left; width:84px; height:112px; padding:12px 4px 4px;}
+#focusPicture_nav li.current{ background:url(images/current.png) ; background-size:92px 128px;}
+#focusPicture_nav li.current img{ opacity:0.8}
+
+#focusPicture_nav li span{ width:42px; height:42px; display:block;  background:rgba(0,0,0,1);border-radius:21px; text-align:center; line-height:42px; color:#FFF; font-size:28px;font-family:HelveticaNeue-BoldItalic}
+#focusPicture_nav li.current span,#focusPicture_nav.w li.current span{background:rgba(255,255,255,0.8); color:#000; width:40px; line-height:40px; border:1px solid #000; }
+#focusPicture_nav.w li span{background:rgba(255,255,255,0.7); color:#000; }
+
+
+
+
+
+	</style>
+    
+        
+	<script src="../../html-common/base/js/pcauto.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+	<script src="base/focusPicture.js"></script>
+    <script>
+	
+$(document).ready(function(){ 
+       var  start=false,t;
+		Magazine.addEvent(1,function(){
+			 if(!start)
+			 {
+			  start=true;
+            t=setInterval(function(){auto()},2500)
+			 }
+		})
+		Magazine.addEvent(0,function(){
+			 if(start)
+			 {
+			  start=false;
+              clearInterval(t);
+
+			 }
+		});
+var	cur=0,
+    sum=3,
+    $conLi=$('#focusPicture_content>li'),
+	$navLi=$('#focusPicture_nav>li');
+
+
+function goto(i){
+
+	$($conLi.dom[i]).addClass("current").siblings().removeClass("current");
+	$($navLi.dom[i]).addClass("current").siblings().removeClass("current");
+    cur=i;
+} 
+	 
+
+$navLi.each(function(e,i){
+    $(e).tap(function(){
+         goto(i);
+         console.log(i);
+         clearInterval(t);
+    })
+})
+
+
+function auto(){
+       cur++;
+       if(cur==sum) cur=0;
+       goto(cur);
+
+}	
+
+
+var href,store,adname;
+$(".appbtn").tap(function(){
+    href=$(this).attr("data-hrefs"),
+    store=$(this).attr("data-store"),
+    adname=$(this).attr("data-adname");
+
+
+    getJson(href);
+    window.location.href=store;
+    setTimeout(function(){
+        window.location.href="adclick:"+adname ;
+    },500)  
+})   
+function getJson(a_sUrl,a_sCallback){
+    console.log("-----------")
+    var _script = document.createElement("script");
+    _script.type="text/javascript";
+    _script.src=a_sUrl;
+    _script.onload = a_sCallback;
+    _script.onerror = a_sCallback;
+    if(_script.onreadystatechange!==undefined){//only work in IE for httpwatch testing.
+        _script.onreadystatechange = function() {
+                if (_script.readyState == 'loaded')//ERROR LOADING
+                    a_sCallback();
+                else
+                if(_script.readyState == 'complete')//loaded
+                    a_sCallback();
+        };
+    };
+
+document.getElementsByTagName("head")[0].appendChild(_script);
+}
+
+
+})
+	</script>
+    
+	<script src="base/focusPicture.js"></script>
+	<title></title>
+</head>
+<body>
+<div id="view">
+    <ul id="focusPicture_content">
+        <li class="current">
+
+            <span class="button appbtn" 
+                  data-hrefs="" 
+                  data-store="https://itunes.apple.com/cn/app/id580025951" 
+                  data-adname="201310南都"
+                  style="width:280px; height:120px; left:240px; top:630px;">
+            </span>
+        </li>
+        <li >
+            <img class="topImg" src="images/2_01.jpg">
+            <img class="bottomImg" src="images/2_02.jpg">
+            <span class="button appbtn"
+                  data-hrefs="" 
+                  data-store="https://itunes.apple.com/cn/app/cheng-shi-hua-bao/id566820591?mt=8" 
+                  data-adname="201310城市画报"
+                  style="width:160px;height:160px; left:100px; top:251px;">
+            </span>
+        </li>
+         <li >
+            <img class="topImg" src="images/3_01.jpg">
+            <img class="bottomImg" src="images/3_02.jpg">
+            <span class="button appbtn"
+                  data-hrefs="http://survey20120718.caixin.com:8082/count/Count?ID=goipad&SID=pchouse" 
+                  data-store="http://itunes.apple.com/cn/app/id391959946?mt=8" 
+                  data-adname="201310财新"
+                  style="width:640px;height:200px; left:80px; top:640px; ">
+            </span>
+        </li>
+    </ul>
+
+   <div id="focusPicture_nav_wrap" >
+     <ul id="focusPicture_nav" class="button">
+          <li class="current"><img src="images/1.jpg" width="84"></li>
+          <li ><img src="images/2.jpg" width="84"></li>
+          <li ><img src="images/3.jpg" width="84"></li>
+     </ul>
+     </div>
+         
+  </div>
+</div><!-- end view -->
+
+</body>
+</html>

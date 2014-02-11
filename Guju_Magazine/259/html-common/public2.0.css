@@ -1,0 +1,149 @@
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+img{display: block;}
+a{-webkit-tap-highlight-color: rgba(0,0,0,0);}
+
+#view{width:768px; height:1024px; overflow:hidden; position: absolute;}
+
+/*------------------------公共按钮  默认为加号 -------------------------*/
+.public_btn{ width:44px; height:44px; padding:7px; position:absolute; z-index:10; }
+.public_btn span{display:block;position:absolute; background:rgba(0,0,0,1) url(images/plus_w.png) center center no-repeat; border-radius:34px; display:block; width:34px; height:34px;-webkit-transition:all 0.3s; background-size:30px;}
+.public_btn div{width:34px; height:34px; background:rgba(253,110,5,1); border-radius:34px; padding:5px; -webkit-animation:public_btn 2s infinite; }
+.public_btn.close_btn div{ -webkit-animation:none; }
+.public_btn.w span{ background:#fff url(images/plus_b.png) center center no-repeat; }
+
+
+.public_btn.big span{border-radius:44px;  width:44px; height:44px;}
+.public_btn.big div{width:44px; height:44px; background:#fd6e05; border-radius:44px; }
+
+
+
+.public_btn.rt1{ right:20px; top:20px;}
+.public_btn.rt2{ right:100px; top:20px;}
+.public_btn.rt3{ right:180px; top:20px;}
+/*.public_btn.hover span{-webkit-animation:public_btn 0.3s; }*/
+
+/*.link_btn{background: rgba(0,0,0,0.5)}*/
+
+/*.public_btn:hover{-webkit-animation:public_btn 0.2s ease;}*/
+
+ /*大图按钮*/
+.bigImg_btn  span{background:rgba(0,0,0,0.95)  url(images/bigImg_w.png) center center no-repeat; }
+.bigImg_btn.w span{background:rgba(255,255,255,0.95) url(images/bigImg_b.png) center center no-repeat; }
+ /*查看更多按钮*/
+.more_btn span{background:rgba(0,0,0,0.95) url(images/more_w.png) center center no-repeat; }
+.more_btn.w span{background:rgba(255,255,255,0.95) url(images/more_b.png) center center no-repeat; }
+ /*组图按钮*/
+.groupImage_btn span{background:rgba(0,0,0,0.95)url(images/groupImage_w.png) center center no-repeat; }
+.groupImage_btn.w span{background:rgba(255,255,255,0.95) url(images/groupImage_b.png) center center no-repeat; }
+ /*放大*/
+.magnify_btn span{background:rgba(0,0,0,0.95) url(images/magnify_w.png) center center no-repeat; }
+.magnify_btn.w span{background:rgba(255,255,255,0.95) url(images/magnify_b.png) center center no-repeat; }
+ /*文字按钮*/
+.text_btn span{background:rgba(0,0,0,0.95) center center no-repeat; color:#FFF; font-size:12px; line-height:12px; height:24px; width:24px;  padding:5px 5px; }
+.text_btn.w span{background:rgba(255,255,255,0.95) center center no-repeat; color:#333; font-size:12px;}
+
+/*音乐按钮*/
+.music_btn span{background:rgba(0,0,0,0.95) url(images/music_w.png) center center no-repeat; }
+.music_btn.w span{background:rgba(255,255,255,0.95) url(images/music_b.png) center center no-repeat; }
+
+/*超链接按钮*/
+.link_btn span{background:rgba(0,0,0,0.95) url(images/link_w.png) center center no-repeat; }
+.link_btn.w span{background:rgba(255,255,255,0.95) url(images/link_b.png) center center no-repeat; }
+
+/*平面图按钮*/
+.plan_btn span{background:rgba(0,0,0,0.95) url(images/plan_w.png) center center no-repeat; }
+.plan_btn.w span{background:rgba(255,255,255,0.95) url(images/plan_b.png) center center no-repeat; }
+
+/*问题按钮*/
+.question_btn span{background:rgba(0,0,0,0.95) url(images/question_w.png) center center no-repeat; }
+.question_btn.w span{background:rgba(255,255,255,0.95) url(images/question_b.png) center center no-repeat; }
+
+/*滑动按钮*/
+.glide_btn span{background:rgba(0,0,0,0.95) url(images/question_w.png) center center no-repeat; }
+.glide_btn.w span{background:rgba(255,255,255,0.95) url(images/question_b.png) center center no-repeat; }
+
+/*右*/
+.right_btn span{background:rgba(0,0,0,0.6) url(images/right_w.png) center center no-repeat; background-size:14px 23px;}
+.right_btn.w span{background:rgba(255,255,255,0.6) url(images/right_b.png) center center no-repeat;background-size:14px 23px; }
+
+/*左*/
+.left_btn span{background:rgba(0,0,0,0.6) url(images/left_w.png) center center no-repeat;background-size:14px 23px;  }
+.left_btn.w span{background:rgba(255,255,255,0.6) url(images/left_b.png) center center no-repeat; background-size:14px 23px;  }
+
+ /*关闭按钮*/
+.close_btn span{background:rgba(0,0,0,0.95) url(images/plus_w.png) center center no-repeat; -webkit-transform:rotate(135deg); }
+.close_btn.w span{background:rgba(255,255,255,0.95) url(images/plus_b.png) center center no-repeat; -webkit-transform:rotate(135deg);  }
+
+.public_btn span{ background-size:30px 30px;}
+.public_btn.big span{ background-size:40px 40px;}
+@-webkit-keyframes public_btn{
+	0%{opacity:1;}
+	50%{opacity:1;}
+	75%{opacity:0.2;}
+	100%{opacity:1;}
+}
+
+
+
+
+
+/*---------------------公共提示----------------------------*/
+.public_prompt{ display:block; text-align:center; padding:2px 5px; position:absolute; background:rgba(0,0,0,0.8); color:#FFF;border-radius:5px; font-size:14px; line-height:14px}
+
+.public_prompt.w{ background:rgba(255,255,255,0.8); color:#000;}
+.public_prompt.rt1{right:16px; top:90px;}
+.public_prompt.rt2{right:95px; top:90px;}
+.public_prompt.rt3{right:175px; top:90px;}
+.public_prompt span{display:block;width: 0; position:absolute; height: 0;-webkit-animation:public_prompt_up 1.5s ease infinite; }
+
+.public_prompt.vertical{ width:1em; padding:10px 5px;}
+
+.public_prompt.up span{bottom:-5px;left:50%; margin-left:-5px; -webkit-animation:public_prompt_up 1.5s ease infinite; border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid rgba(0,0,0,0.8); }
+
+.public_prompt.dowm span{top:-5px; left:50%; margin-left:-5px;-webkit-animation:public_prompt_dowm 1.5s ease infinite; border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid rgba(0,0,0,0.8) ; }
+.public_prompt.left span{left:-5px; top:50%; margin-top:-5px;-webkit-animation:public_prompt_left 1.5s ease infinite;
+border-bottom: 5px solid transparent;
+border-top: 5px solid transparent;
+border-right: 5px solid rgba(0,0,0,0.8) ; }
+.public_prompt.right span{right:-5px; top:50%; margin-top:-5px;-webkit-animation:public_prompt_right 1.5s ease infinite; 
+border-bottom: 5px solid transparent;
+border-top: 5px solid transparent;
+border-left: 5px solid rgba(0,0,0,0.8) ;}
+
+.public_prompt.w.up span{ border-top:5px solid rgba(255,255,255,0.8) ;}
+.public_prompt.w.dowm span{ border-bottom:5px solid rgba(255,255,255,0.8) ;}
+.public_prompt.w.left span{ border-right:5px solid rgba(255,255,255,0.8) ;}
+.public_prompt.w.righ span{ border-left:5px solid rgba(255,255,255,0.8) ;}
+@-webkit-keyframes public_prompt_up{
+	0%{-webkit-transform:translate3d(0,0,0);}
+	50%{-webkit-transform:translate3d(0,5px,0);}
+	100%{-webkit-transform:translate3d(0,0,0);}
+}
+@-webkit-keyframes public_prompt_dowm{
+	0%{-webkit-transform:translate3d(0,0,0);}
+	50%{-webkit-transform:translate3d(0,-5px,0);}
+	100%{-webkit-transform:translate3d(0,0,0);}
+}
+@-webkit-keyframes public_prompt_left{
+	0%{-webkit-transform:translate3d(0,0,0);}
+	50%{-webkit-transform:translate3d(-5px,0,0);}
+	100%{-webkit-transform:translate3d(0,0,0);}
+}
+
+@-webkit-keyframes public_prompt_right{
+	0%{-webkit-transform:translate3d(0,0,0);}
+	50%{-webkit-transform:translate3d(5px,0,0);}
+	100%{-webkit-transform:translate3d(0,0,0);}
+}
+
+
+
+/*iscroll*/
+#scroll{ width:768px; height:1024px; overflow:hidden}
+#scroll>ul{}
+#scroll>ul>li{ width:100%; height: 1024px; position:relative;}
+#scroll>ul>li>img{ display:block;  }
+#scroll>ul>li{display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: end; -webkit-box-orient:horizontal;}
+#scroll>ul>li.center {-webkit-box-align: center;-webkit-box-orient: vertical;}
+#scroll>ul>li.top {-webkit-box-align: start ; -webkit-box-orient:horizontal;}

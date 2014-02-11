@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* debug */
+
+#glideShowWrap{ position:absolute;left:-768px; top:0; width:768px; height:1024px;overflow: hidden; position: absolute;-webkit-transition-timing-function:linear; border-right:2px solid #fff; }
+#glideShow{ overflow:hidden; position:absolute; left:768px; top:0;  -webkit-transform-style:preserve-3d;-webkit-transition-timing-function:linear;}
+#glideShow img{ display:block;}
+
+#glideShow_button{ background:url(../images/button.png) center no-repeat; width:192px; height:60px; background-size:192px 51px; left: -96px; top:600px; position:absolute; -webkit-transition-timing-function:linear;}
+#showFront_prompt{ display:none;}
+
+
+

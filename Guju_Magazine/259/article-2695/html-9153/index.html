@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title>全屏滚动</title>
+    <style>
+    /*#view{background: url(04.jpg);background-size: 768px 1024px}*/
+    .container{position: absolute;}
+    .container img{position: absolute;left: 0px;top: 0px;opacity: 0;-webkit-transition:opacity 1s;}
+    .container img.current{opacity: 1;}
+    #container_1{left: 0px;top: 0px;width: 768px;height: 626px;}
+    #container_2{left: 40px;top: 655px;width: 286px;height: 218px;}
+    #control{width: 180px;height: 120px;position: absolute;right:490px;bottom: 45px}
+    #control div{width: 60px;height: 60px;position: absolute;/*background: rgba(165,231,156,0.5);*/}
+    #left{left: 20px;top: 30px;}
+    #right{left: 90px;top: 30px;}
+
+    #scroll{width: 375px;height: 230px;position: absolute;left: 360px;top: 756px;}
+    #scroll>ul>li{width: 375px;}
+    </style>
+</head>
+<body>
+<div id="view">
+    <div id='container_1' class='container'>
+        <img src='images/00.jpg' width='768' class='current'/>
+        <img src='images/01.jpg' width='768' />
+        <img src='images/02.jpg' width='768' />
+        <img src='images/03.jpg' width='768' />
+    </div>
+    <div id="container_2" class='container'>
+        <img src="images/00-1.jpg" width="286" class="current" />
+        <img src="images/01-1.jpg" width="286" />
+        <img src="images/02-1.jpg" width="286" />
+        <img src="images/03-1.jpg" width="286" />
+    </div>
+    <div id='control'>
+        <div class='button' id='left'></div>
+        <div class='button' id='right'></div>
+    </div>
+
+    <div id="scroll">
+        <ul>
+             <li style='height:569px;'><img src="images/04.png" width="365" height='569'></li>
+        </ul>
+    </div>
+
+    <div class="public_prompt dowm" style='left:165px;top:965px;'>点击查看更多<span></span></div>
+</div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+    $(document).ready(function(){
+        var cur=1;
+        $('#left').tap(function(){
+            $('.public_prompt').hide();
+
+            if(cur<=1){
+                cur==1;
+            }else{
+                cur-=1;
+            }
+            $('#container_1 img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+            
+            $('#container_2 img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+        });
+
+        $('#right').tap(function(){
+            $('.public_prompt').hide();
+
+            if(cur>=4){
+                cur==4;
+            }else{
+                cur+=1;
+            }
+            $('#container_1 img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+            $('#container_2 img:nth-child('+cur+')').addClass('current').siblings().removeClass('current');
+
+        });
+
+        var myscroll;
+        myscroll = new iScroll("scroll", {
+            snap:true,
+            momentum: false,
+            hScrollbar: false,
+            vScrollbar: false,
+        });  
+    })
+</script>
+</html>

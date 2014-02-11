@@ -1,0 +1,29 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{}
+/* debug */
+/*.button{background:rgba(0,0,0,0.5);}*/
+
+#view{ width:768px; height:1024px; overflow:hidden;  position:relative; -webkit-perspective:1000px; }
+.scroll {width:230px; height:936px;  position:absolute; top:68px;}
+.scroll span{ display:block;}
+.scroll div{ position:absolute;}
+#scroller1{ left:20px;}
+#scroller1 div{ }
+#scroller2{ left:269px;}
+#scroller3{ left:519px;}
+.scroll img{ display:block}
+
+#link{ width:768px; height:1024px; top:0; left:0; pointer-events:none;}
+#link span{ position:absolute; pointer-events:none; width:150px; height:50px;pointer-events:auto;}
+
+
+
+
+
+
+
+
+
+

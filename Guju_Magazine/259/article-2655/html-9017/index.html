@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+        <link href="../../html-common/pchouse2.0/showFront/showFront.css" rel="stylesheet" type="text/css" />
+    <style>
+        #t{ position: absolute; top: 0; left: 0; -wenkit-transition:opacity 0s; opacity:0; pointer-events:none;}
+    </style>
+
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+
+<div id="scroll">
+    <ul>
+        <li>
+           <img src="images/02.png" width="768">
+        </li>
+        <li>
+            
+        </li>
+    </ul>
+</div>
+<img id="t" src="images/03.png" width="768"/>
+<img src="images/01.png" width="342" style="position:absolute; right:0; top:0;pointer-events:none;">
+
+</div>
+<!-- end view -->
+</body>
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="iscroll.js"></script>
+
+<script>
+$(document).ready(function(){ 
+
+$card=$("#t");
+var y,d,dy,b=1024/180,sy,t;
+var myscroll;
+	myscroll = new iScroll("scroll", {
+      snap:true,
+	   momentum: false,
+	   hScrollbar: false,
+	   vScrollbar: false,
+     snapThreshold: 1,
+
+	 }); 
+})
+</script>
+
+
+</html>

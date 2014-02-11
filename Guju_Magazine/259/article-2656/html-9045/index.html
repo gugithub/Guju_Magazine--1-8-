@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <style>
+        .link_btn{position: absolute; width: 60px; height: 60px; left: 0; top: 0;/*background: rgba(0,0,0,0.5);*/} 
+    </style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+    <!-- <img src="023.jpg" width="768" style="position:absolute;left:0;top:0;" alt=""> -->
+<div id="view">
+    <div class="button link_btn" style="left:290px; top:460px;"></div>  
+    <div class="button link_btn" style="left:290px; top:800px;"></div>
+    <div class="button link_btn" style="left:670px; top:210px;"></div>
+    <div class="button link_btn" style="left:670px; top:470px;"></div>
+    <div class="button link_btn" style="left:670px; top:770px;"></div>
+    <div class="button link_btn" style="left:490px; top:880px; width:200px; height:100px"></div>
+</div>
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+
+<script>
+
+$(document).ready(function(){ 
+    var link=[
+"http://u.pchouse.com.cn/jsp/intf/click.jsp?type=1&source=1&id=100219",
+"http://u.pchouse.com.cn/jsp/intf/click.jsp?type=1&source=1&id=118746",
+"http://u.pchouse.com.cn/jsp/intf/click.jsp?type=1&source=1&id=137946",
+"http://u.pchouse.com.cn/jsp/intf/click.jsp?type=1&source=1&id=249941",
+"http://u.pchouse.com.cn/jsp/intf/click.jsp?type=1&source=1&id=235073",
+"https://itunes.apple.com/cn/app/id568798766"
+]
+    $(".link_btn").each(function(e,i){
+        $(e).tap(function(){
+        	window.location.href=link[i]+"#custombrowser";
+        })
+    })
+})
+</script>
+
+
+</html>

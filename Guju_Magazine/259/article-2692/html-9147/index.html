@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+	 #showFront_front{-webkit-transform:translate(0px,-428px);  position: absolute;-webkit-transition:all 0.8s; }
+	 #showFront_front.show{ opacity:1; -webkit-transform:translate(0,0px);pointer-events:auto;}
+	</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+
+
+    
+<!-- 显示前图 -->
+   <img id="showFront_front" style="left:auto; top:0px;right:47px;;" src="images/01.jpg" width="204" class="button" data-href="sinaweibo:  #向TA提问# 《玄关的讲究》 @董易林 @PChouse家居杂志" />
+   <div id="showFront_button"  class="public_btn question_btn button  rt1" ><div><span></span></div></div>
+   <div class="public_prompt  dowm rt1" style="">向他提问<span></span></div>
+</div>
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+   <script src="../../html-common/pchouse2.0/showFront/showFront.js"></script>
+
+<script>
+
+var showFront1;
+
+$(document).ready(function(){ 
+
+
+	showFront1 = new showFront( {
+		buttonId: "showFront_button",
+		start: function () {},
+		end: function () {}
+	});  
+	 
+$("#showFront_front").tap(function(){
+   $(this).removeClass("show")
+   $("#showFront_button").removeClass("close_btn")
+   
+})
+$('#showFront_button').tap(function(){
+	$('.public_prompt').hide();
+})
+
+
+})
+</script>
+
+
+</html>

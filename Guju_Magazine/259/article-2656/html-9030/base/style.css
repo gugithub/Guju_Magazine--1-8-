@@ -1,0 +1,12 @@
+#labelBox{position:absolute; right: 0; height: 1024px;width: auto; -webkit-transform:translate(402px,0);-webkit-transition:all 0.5s;}
+#labelBox.show{position:absolute; right: 0;-webkit-transform:translate(0,0);width:768px;}
+
+#labelNav{position:absolute; right:402px; top:780px;}
+#labelNav>li{ position:absolute; right: 0;}
+#labelNav>li:nth-child(2){top:80px;}
+#labelNav>li.current{z-index:10;}
+
+#labelCon{position:absolute;right: 0; -webkit-box-shadow:-5px 0px 10px rgba(0,0,0,0.5); width: 402px; height:1024px;}
+#labelCon>li{position:absolute;right:0;top:0;opacity:0;}
+#labelCon>li.current{opacity:1;}
+

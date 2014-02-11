@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="base/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/bgScroll3.0/bgScroll.css" rel="stylesheet" type="text/css" />
+    <style>
+    #labelBox{ z-index:200;}
+    #bgscroller {width:1128px;}/*图片宽度*/
+    #bgscroller>img{height: 376px}
+    </style>
+    <title>标签切换</title>
+</head>
+<body>
+    <div id="view">
+        <!--标签菜单-->
+        <div id="labelBox" class="button">
+            <ul id="labelNav" class="button">
+                <li><img src="images/03.png" width="143"></li>
+                <li><img src="images/04.png" width="143"></li>
+            </ul>
+            <ul id="labelCon" >
+                <li><img src="images/05.jpg" width="402"></li>
+                <li><img src="images/06.jpg" width="402"></li>
+            </ul>
+        </div>
+        <!--标签菜单-->
+        
+
+        <!-- 背景滚动 -->
+        <div id="bgScrollWrap">
+            <div id="bgscroll" class="button">
+                <div id="bgscroller">
+                    <img src="images/02_01.jpg" height="376">
+                    <img src="images/02_02.jpg" height="376">
+                </div>
+            </div>
+            <img src="images/01.png" id="frontImg">
+            <div id="bgScroll_centre">左右滑动图片<br />点击返回</div>
+        </div>
+        <div id="bgScroll_button" class="public_btn button   bigImg_btn rt1"><div><span></span></div></div>
+        <div id="bgScroll_prompt" class="public_prompt  dowm rt1">查看全图<span></span></div>
+
+        <div id="labelprompt" class="public_prompt  up " style="right:25px; top:740px;">点击查看<span></span></div>
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script src="../../html-common/pchouse2.0/bgScroll3.0/bgScroll.js"></script>
+<script src="base/custom.js"></script>
+</html>

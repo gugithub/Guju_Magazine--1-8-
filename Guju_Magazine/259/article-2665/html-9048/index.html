@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/showBigImg2.0/showBigImg.css" rel="stylesheet" type="text/css" />
+    <style>
+    #scroll{position: absolute;left: 40px;top: 860px;width: 507px;height: 125px;}
+    </style>
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+<!-- 显示放大图景 -->  
+  <div id="showBigImg" >
+
+        <div id="showBigImg_showbox">
+            <img src="images/showBigImg/1.jpg">
+        </div> 
+
+        <ul id="showBigImg_nav">
+            <li  class="public_btn button  magnify_btn" style="left:230px;top:40px;"><div><span></span></div></li>
+        </ul>
+        <div id="showBigImg_prompt"  class="public_prompt dowm" style="left:227px;top:105px;">放大局部<span></span></div>
+    </div>
+
+    <div id="scroll">
+        <ul>
+            <li style='height:305px;'>
+                <img src="images/P3.jpg"  height='305'>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end view -->
+</body>
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+    <script src="../../html-common/pchouse2.0/showBigImg2.0/showBigImg.js"></script>
+<script>
+    var showBigImg1,
+        myscroll;
+    $(document).ready(function(){ 
+        showBigImg1 = new showBigImg( {
+		    start: function () {},//进入大图
+		    end: function () {}  //退出大图
+        });  
+
+	    myscroll = new iScroll("scroll", {
+            snap:true,
+            momentum: false,
+            hScrollbar: false,
+            vScrollbar: false,
+        }); 
+    });
+</script>
+</html>

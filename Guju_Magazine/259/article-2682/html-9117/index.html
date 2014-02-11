@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="showBigImg2.0/showBigImg.css" rel="stylesheet" type="text/css" />
+    <style>
+        /*#view{ background: url(03.jpg); background-size: 768px 1024px; }*/
+        #showBigImg_nav{ position: absolute; left: 0; top: 0;}
+        #showBigImg_nav>li{ position: absolute;/*background: rgba(0,0,0,0.5);*/}
+        #showBigImg_nav>li:nth-child(1){ width: 270px; height: 201px;  left: 40px; top: 250px; } 
+        #showBigImg_nav>li:nth-child(2){ width: 270px; height:202px;  left: 40px; top: 460px; }  
+        #showBigImg_nav>li:nth-child(3){ width: 270px; height: 253px;  left: 40px; top: 671px; }  
+        #showBigImg_nav>li:nth-child(4){ width: 199px; height: 254px;  left: 318px; top: 671px; }  
+        #showBigImg_nav>li:nth-child(5){ width: 199px; height: 254px;  left: 529px; top: 671px; }  
+        #showBigImg_nav>li:nth-child(6){ width: 410px; height: 412px;  left: 320px; top: 250px; }  
+        #linkButtom{ position: absolute; right:0; bottom: 20px; width: 150px; height: 180px; /*background: rgba(0,0,0,0.5)*/}
+        #showBigImg_showbox>div{ position: relative;}
+    </style>
+    <title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+<!-- 显示放大图景 -->  
+  <div id="showBigImg" >
+
+        <div id="showBigImg_showbox">
+            <div><img  src="images/showBigImg/1.jpg"  >
+                <div id="linkButtom" class="button" data-href=""></div>
+            </div>
+        </div> 
+
+        <ul id="showBigImg_nav">
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button "></li>
+        </ul>
+        <div id="showBigImg_prompt"  class="public_prompt up" style="left:602px;top:215px;">点击图片查看<span></span></div>
+    </div>
+</div>
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="showBigImg2.0/showBigImg.js"></script>
+<script>
+
+var showBigImg1;
+$(document).ready(function(){ 
+
+	 showBigImg1 = new showBigImg( {
+		start: function () {},//进入大图
+		end: function () {}  //退出大图
+	 });  
+var links=[
+"",
+"http://weibo.com/1304898677/A9ABZvK81",
+"http://bbs.pchouse.com.cn/post-575739_4517476.html",
+"http://weibo.com/1924857827/A8Ihvn2Pe",
+"http://bbs.pchouse.com.cn/post-575739_4299320.html",
+"http://weibo.com/1769977137/A7WvF0aYr",
+]
+
+$("#showBigImg_nav>li").each(function(e,i){
+     $(e).tap(function(){
+       $("#linkButtom").attr("data-href",links[i]+"#CustomBrowser")  
+     })    
+})
+
+
+})
+</script>
+
+
+</html>

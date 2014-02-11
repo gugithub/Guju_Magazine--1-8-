@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title>全屏滚动</title>
+    <style>
+    /*#view{background: url(0.jpg);background-size: 768px 1024px;}*/
+    #tit{position: absolute;left: 599px;top:505px;-webkit-transition:opacity 0.5s;}
+    #tit.hide{opacity: 0;}
+    #con{position: absolute;right:0px;bottom: 0px;width:768px;height:406px;-webkit-transform:translateY(422px);-webkit-transition:all 0.5s;}
+    #con>img{position: absolute;}
+    #con>img:nth-child(2){top: -16px;}
+    #con.show{-webkit-transform:translateY(0px);}
+    #public_btn{-webkit-transition:all 0.5s;left:552px; top:495px;}
+    #public_btn.active{top: 583px;}
+    #link{width: 286px;height: 46px;position: absolute;left: 238px;top: 505px;background: url(images/P1.2.jpg) 0 0 no-repeat; background-size: 286px 42px;-webkit-animation:flash 1.5s  ease infinite;}
+    @-webkit-keyframes flash{
+        0%{-webkit-transform:scale(1);}
+        50%{-webkit-transform:scale(1.05);}
+        100%{-webkit-transform:scale(1);}
+     }
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="con">
+          <img src="images/P1.2_01.jpg" width='768' alt="" />
+          <img src="images/P1.2.png" width="179">
+        </div>
+        <img src="images/P1.jpg" width='100' alt="" id="tit">
+        <div class="public_btn button big" id='public_btn'><div><span></span></div></div>
+        <div class='button' id="link" ></div>
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script>
+    $(document).ready(function(){ 
+
+        $('#public_btn').tap(function(){
+            $('#public_btn').toggle('close_btn');
+            $('#public_btn').toggle('active');
+            $('#con').toggle('show');
+            $('#tit').toggle('hide');
+        });
+
+        $('#link').tap(function(){
+            window.location.href="openapps:http://www.pchouse.com.cn/app/34/349331.html";
+            setTimeout(function(){
+             window.location.href="adclick:2013.10至app store点评"; 
+            },500)
+        })
+    });
+</script>
+</html>

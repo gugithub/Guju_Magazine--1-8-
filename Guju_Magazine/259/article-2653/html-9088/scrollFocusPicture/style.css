@@ -1,0 +1,8 @@
+﻿/* reset */
+
+
+
+#scrollFocusPicture{ position: absolute; left: 40px;top: 80px; width: 768px; }
+#scrollFocusPicture>ul{ width: 768px;}
+#scrollFocusPicture>ul>li{ width: 768px; float: left; }
+

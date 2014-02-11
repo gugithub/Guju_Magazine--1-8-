@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title>EaselJS Example: Using BitmapAnimation Objects</title>
+
+	<link href="base/demoStyles.css" rel="stylesheet" type="text/css" />
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/ad.js"></script>
+    <script type="text/javascript" src="easeljs/easeljs-0.5.0.min.js"></script>	<!-- We also provide hosted minified versions of all CreateJS libraries.
+	  http://code.createjs.com -->
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <style>
+        /*#view{ background: url(../bg.jpg); background-size: 768px 1024px;}*/
+        #canvasHolder{ position: absolute; left: 0;top:0; z-index: 8; width: 768px; height: 1024px; pointer-events:none;}
+        #perspective{ position: absolute; width: 100%; height: 100%;-webkit-perspective:2500; top: 0; pointer-events:none; z-index: 15 }
+        #text{ position: absolute; left: 0;top:0; z-index: 10; pointer-events:none;}
+
+        #cover{ position: absolute; width: 768px; height: 1024px; background: rgba(0,0,0,0.8); opacity:0; z-index: 1}
+        #cover.show{ opacity:1; -webkit-transition:opacity 0.5s;}
+        #card{ position: absolute; width:688px; height: 483px;-webkit-transform-style: preserve-3d; position: absolute; left: 40px; top: 150px; -webkit-transition:all 0.5s;}
+        #card{-webkit-transform:translate3d(-170px,250px,0) rotate3d(-1,9,2, 180deg) scale(0.15); pointer-events:auto;}
+        #card.show{-webkit-animation:card 1s linear infinite; }
+        #card.show1{-webkit-transform:translate3d(0px,0px,0) rotate3d(0,9,0, 0deg) scale(1); }
+        #card.show2{ -webkit-transform:translate3d(0,0,0) rotate3d(0,0,0,0deg) scale(1);}
+        #card.show3{ -webkit-transform:translate3d(0px,0px,0) rotate3d(0,9,0, 180deg) scale(1);}
+        #card.show4{ -webkit-transform:translate3d(100px,110px,0) rotate3d(9,0,0, 90deg) scale(0.1); opacity:0;}
+        #card>div{ position:absolute; left: 0;top: 0;-webkit-backface-visibility: hidden;width:688px; height: 483px;}
+        #card>.f{  background: url(images/P1-03.jpg); background-size: 688px 483px;-webkit-transform:rotateY(180deg);}
+        #card>.b{  background: url(images/P1-02.jpg); background-size: 688px 483px; }
+        #card>.b>div{display:none;}
+         #card.show2>.b>div{display:block;}
+        .b .button{ background: none; font-size: 18px;line-height:30px;border: none;  border-radius:0;-webkit-user-select:auto; font-family:AmericanTypewriter-Bold; font-weight: bolder;}
+        #start{ position: absolute; left: 70px; top: 550px; width: 200px; height: 400px; z-index: 19}
+        #content{  position: absolute;left: 55px;top: 92px;width: 300px;height: 330px;line-height:37px; }
+        #add{ position: absolute; left: 465px; top: 180px; width: 150px; height:30px;border-bottom: solid 2px #a4a18e  ;}
+        #postcode{position: absolute; left: 465px; top: 270px; width: 150px; height:30px;border-bottom: solid 2px #a4a18e  ;}
+        #name{ position: absolute; left: 465px; top: 305px; width: 150px; height:30px;border-bottom: solid 2px #a4a18e  ;}
+        #e-mail{ position: absolute; left: 495px; top: 340px; width: 150px; height:30px;border-bottom: solid 2px #a4a18e  ;}
+        #anniu{  position: absolute; left: 500px; top: 580px;-webkit-transform:scale(0);  opacity:0;-webkit-transition:all 0.5s; z-index: 20; }
+        #anniu.show{-webkit-transform:scale(1);  opacity:1;  }
+        
+        #weibo{ position: absolute; width: 100%; height: 100%; background: url("images/P1-04.png"); background-size: 100%; top: 0; opacity:0;-webkit-transition:opacity 0.5s; z-index: 14}
+        #weibo.show{opacity:1;  }
+        #weibo_btn{ position: absolute; left: 555px; top: 193px; -webkit-transform-origin:30% 100%; }
+        #weibo.show #weibo_btn{-webkit-animation:weibo_btn 1s infinite linear;}
+        .amount{ position: absolute; right: 77px; bottom:184px; color:#ffed0f;  font-size: 22px;font-family:Arial-BoldMT; }
+        #amount2{right: 201px; bottom:274px; font-size: 30px}
+        #luntan{ position: absolute; left: 136px; top: 453px; width: 100px; height: 80px;z-index: 19}
+        #close{ opacity:0; -webkit-transition:opacity 0.5s linear; z-index: 100; }
+        #close.show{ opacity:1;}
+@-webkit-keyframes weibo_btn{
+	0%{ -webkit-transform:rotate(-5deg);}
+	50%{-webkit-transform:rotate(5deg);}
+	100%{-webkit-transform:rotate(-5deg);}
+}
+
+@-webkit-keyframes card{
+	0%{ opacity:1;}
+	50%{opacity:0.5;}
+	100%{opacity:1;}
+}
+    </style>
+
+<script>
+
+
+
+var canvas;
+var stage;
+var interval=1;
+var imgSeq = new Image();		// The image for the sparkle animation
+var bmpAnim;						// The animated sparkle template to clone
+function init() {
+	// create a new stage and point it at our canvas:
+	canvas = document.getElementById("testCanvas");
+	stage = new createjs.Stage(canvas);
+	
+	// attach mouse handlers directly to the source canvas.
+	// better than calling from canvas tag for cross browser compatibility:
+	//stage.onMouseMove = moveCanvas;
+	//stage.onMouseDown = clickCanvas;
+
+	// define simple sprite sheet data specifying the image(s) to use, the size of the frames,
+	// and the registration point of the frame
+	// it will auto-calculate the number of frames from the image dimensions and loop them
+	var data1 = {
+		images: ["images/1.png"],
+		frames: {width:130,height:138,regX:75,regY:75}
+	}
+	var data2 = {
+		images: ["images/2.png"],
+		frames: {width:50,height:50,regX:0,regY:0}
+	}
+	
+
+	
+	// set up an animation instance, which we will clone
+	bmpAnim1 = new createjs.BitmapAnimation(new createjs.SpriteSheet(data1));
+	bmpAnim2 = new createjs.BitmapAnimation(new createjs.SpriteSheet(data2));
+
+
+	// add a text object to output the current FPS:
+	
+
+
+
+	// start the tick and point it at the window so we can do some work before updating the stage:
+	createjs.Ticker.setFPS(30);
+	createjs.Ticker.addListener(window);
+	addSparkles(10, Math.random()*1000, -130 ,1);
+}
+
+
+function tick() {
+	// loop through all of the active sparkles on stage:
+	interval--;
+
+	if( interval==0)
+	{
+	     addSparkles(1, Math.random()*1000, -150 ,1);
+		 interval=2;
+		 
+		 
+	}
+
+	
+	
+	var l = stage.getNumChildren();
+	for (var i=l-1; i>=0; i--) {
+		var sparkle = stage.getChildAt(i);
+
+		// apply gravity and friction
+		sparkle.vY += 0.05;
+		sparkle.vX *= 0.98;
+
+		// update position, scale, and alpha:
+		sparkle.x += sparkle.vX;
+		sparkle.y += sparkle.vY;
+		sparkle.alpha -=0.01;
+		sparkle.rotation+=sparkle.vR;
+		//sparkle.alpha += sparkle.vA;
+
+
+		//remove sparkles that are off screen or not invisble
+		if (sparkle.alpha <= 0 || sparkle.y > canvas.height) {
+			stage.removeChildAt(i);
+		}
+	}
+
+
+	// draw the updates to stage
+	stage.update();
+}
+
+
+
+
+//sparkle explosion
+function clickCanvas(evt) {
+	addSparkles(1, stage.mouseX, stage.mouseY,1);
+}
+
+//sparkle trail
+function moveCanvas(evt) {
+	addSparkles(1, Math.random()*768-150, -150 ,0.01);
+}
+
+function addSparkles(count, x, y, speed) {
+
+		var sparkle = bmpAnim1.clone();
+		
+		//var sparkle = bmpAnim.clone();
+        var rImg=Math.floor(Math.random()*5)+1;
+		//console.log(rImg)
+		if(rImg==1){
+             var sparkle = bmpAnim1.clone();
+		}else{
+            var sparkle = bmpAnim2.clone();
+		}
+		
+        
+		// set display properties:
+		sparkle.x = x;
+		sparkle.y = y;
+		sparkle.rotation = 360 * Math.random();
+		sparkle.scaleX = sparkle.scaleY = (Math.random()/2)+0.5;
+
+		// set up velocities:
+		var a = Math.PI*2*Math.random();
+		var v = (Math.random()/2)+0.1;
+		sparkle.vX = Math.cos(a)*v;
+		
+		if(rImg==1){
+			sparkle.vY = Math.sin(a)*v;
+		}else{
+            sparkle.vY = Math.sin(a)*v*0.1;
+		}
+		sparkle.alpha = 1.7;
+
+
+		sparkle.vR = (Math.random()+1)*5; // rotate
+		//sparkle.vA = -Math.random()*0.05-0.01; // alpha
+
+		// start the animation on a random frame:
+		sparkle.gotoAndPlay(Math.random()*sparkle.spriteSheet.getNumFrames()|0);
+
+		// add to the display list:
+		stage.addChild(sparkle);
+	
+}
+
+var myscroll,$amount,callback;
+function getJson(a_sUrl){
+	var _script = document.createElement("script");
+	_script.type="text/javascript";
+	_script.src=a_sUrl;
+	document.getElementsByTagName("head")[0].appendChild(_script);
+}
+
+
+
+$(document).ready(function(){ 
+
+		 var AD = initAD("http://ivy.pchouse.com.cn/adpuba/show?adid=267180&id=pchouse.ipad.fengdi.cygg.&media=js",
+   	//var AD = initAD("http://ivy.pconline.com.cn/adpuba/show?adid=278239&id=pc.test.click.&media=js", //test
+				{vc:"",
+				 cc:""
+				});
+	AD.sendEvent("vc","");
+	 var vid= document.getElementById("myMusic");
+ vid.load();
+var $card=$("#card"),$anniu=$("#anniu"),$cover=$("#cover"),$text=$("#text"),$weibo=$("#weibo"),$weibo_btn=$("#weibo_btn"),$t=$("#content"),$amount=$(".amount");	
+$("#start").tap(function(){
+		AD.sendEvent("cc","");
+	$("#close").addClass("show")
+	$cover.addClass("show");
+	$text.css("z-index","0");
+   $card.attr("class","show1");
+   $("#luntan").hide();
+   setTimeout(function(){
+   	 $card.attr("class","show2");
+   	 $anniu.addClass("show")
+   	 $("#start").hide();
+
+   },500)
+})
+var sum,send=false;
+callback=function callback(data){
+	if(send){
+       sum++
+	}else{
+	   sum=data*4+200 ;
+       send=true;
+    };
+    $amount.html(sum);	
+}
+
+if(window.navigator.onLine){
+	//http://192.168.50.106:8090/house20130916/action/getCount.jsp?content=uuvvcontent&email=uv@126.com&postcode=555555&address=wwwww&name=uuvvv
+		getJson("http://play10.pcbaby.com.cn/house130916/action/getCount.jsp")
+
+	}else{
+		
+	}
+
+
+$("#close").tap(function(){
+     $cover.removeClass("show");
+     $(this).removeClass("show")
+	$text.css("z-index","10");
+   $card.attr("class","show");
+   $anniu.removeClass("show");
+   $weibo.removeClass("show");
+   	$("#start").show();
+   	$("#luntan").show();
+});
+$anniu.tap(function(){
+	if(!window.navigator.onLine){
+		alert("请链接WIFI才能寄出");
+		return;
+	}
+	$anniu.removeClass("show");
+    $card.attr("class","show3");
+    $weibo.addClass("show");
+    console.log( escape($t.get(0).value));
+   setTimeout(function(){
+   	 $card.attr("class","show4");
+      
+   	  getJson("http://play10.pcbaby.com.cn/house130916/action/getCount.jsp?content="+ escape($t.get(0).value) +"&email="+ escape($("#e-mail").get(0).value)+"&postcode="+ escape($("#postcode").get(0).value) +"&address="+ escape($("#add").get(0).value)  +"&name="+ escape($("#name").get(0).value ) )
+
+   },1000)
+})
+$weibo_btn.tap(function(){
+	var tt=$t.get(0).value ;
+
+
+	if(tt.length>80) tt=tt.slice(0,80)+"......";
+	window.location.href="sinaweibo:"+ tt +" 一起来下载杂志>>http://t.cn/zOqIjAN 参与#芬琳漆从家乡芬兰为您寄明信片# 活动，分享来自 #PChouse家居杂志# iPad版 @PChouse家居杂志 @芬琳中国  "	
+
+})	
+
+function sendSucceed(){
+    $weibo.removeClass("show");	
+    $cover.removeClass("show");
+    $text.css("z-index","10");
+
+
+}
+
+
+
+
+	 	Magazine.addEvent(1,function(){
+	 		console.log(1)
+	 		 $card.attr("class","show");
+			  init();
+			  vid.play();
+		})
+		Magazine.addEvent(0,function(){
+			  window.history.go(0);
+		})
+		Magazine.addEvent(2,function(){
+			console.log(2)
+			sendSucceed() 
+		})
+
+
+})
+
+</script>
+
+</head>
+
+<body>
+<div id="view">
+	<div id="showBigImg_prompt"  class="public_prompt up" style="left:150px;top:570px;">点击名片参与活动<span></span></div>
+	<div class="amount" id="amount1"></div>
+	<img id="text" src="images/text.png" width="768">
+	<div id="cover"></div>
+	<div id="canvasHolder"><canvas class="button" id="testCanvas" width="768" height="1024"></canvas></div>
+	<div id="weibo">
+           <img id="weibo_btn" class="button" src="images/weibo_btn.png" width="151">
+           <div class="amount" id="amount2"></div>
+	</div>
+    <div id="perspective">	
+	<div id="card" class="button">
+        <div class="f"></div>
+        <div class="b">
+        	<div>
+        	  <div id="showBigImg_prompt2"  class="public_prompt up" style="left:250px;top:50px;">点击输入祝福语<span></span></div>
+               <textarea id="content"  class="button" ></textarea> 
+               <input id="add" class="button"></input>
+               <input id="postcode" class="button"></input>
+               <input id="name" class="button"></input>
+               <input id="e-mail" class="button"></input>
+            </div>   
+        </div>
+	</div>
+    </div>
+
+	<div id="start" class="button"></div>
+	<img id="anniu" class="button" src="images/anniu.png" width="111"/ >
+	 <div id="luntan" class="button" data-href="http://bbs.pchouse.com.cn/topic-585342.html#CustomBrowser"></div> 
+
+	 <div id="close" class="public_btn button   close_btn rt1"><div><span></span></div>     
+</div>
+
+<audio src="m.mp3" id="myMusic" loop="loop" style=" position:absolute; display:none;"></audio>
+    
+    
+</body>
+
+</html>
+

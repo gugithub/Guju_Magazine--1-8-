@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- 禁止用户手动缩放 -->
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <!-- 忽略将页面中的数字识别为电话号码 -->
+        <meta content="telephone=no" name="format-detection" />
+        <!-- 全屏应用模式 -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+        <style>
+        /*body{background: url(http://192.168.50.185/PCladyiPad/201310/AD.jpg)no-repeat;width: 768px;height: 1024px;background-size:768px 1024px ;}*/
+        #view{ width:768px; height:1024px; position:relative; overflow:hidden;}
+        #button{
+            position: absolute;
+            left: 283px;
+            top: 897px;
+            width:200px;
+            height: 80px;
+            /*background: rgba(0,0,0,0.5);*/
+        }
+        </style>
+        <title>pclady</title>
+    </head>
+    <body>
+        <!-- <img src="01.jpg" width="1024" style='position:absolute;left:0px;top:0px;'> -->
+        <div id="view" >
+            <div id="button" class='button' ></div>
+        </div>
+    </body>
+    <script src="../../html-common/base/js/pcauto1.1.js"></script>
+        <script src="../../html-common/base/js/magazine.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function () {
+            $("#button").tap(function(){
+              window.location.href="https://itunes.apple.com/cn/app/id595305150?mt=8";
+              setTimeout(function(){
+               window.location.href="adclick:201310女性杂志投家居杂志"
+              },500)
+            });
+          });
+        </script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="scrollFocusPicture/style.css" rel="stylesheet" type="text/css" />
+    <style>
+    #scroll{ pointer-events:none;}
+    #scrollFocusPicture{ height: 904px; width: 688px;}
+    #scrollFocusPicture>ul>li{width: 688px;}
+    </style>
+    <title>全屏滚动</title>
+</head>
+<body>
+    <div id="view">
+            <div id="scrollFocusPicture">
+              <ul>
+                <li><img src="images/p2-01.jpg" width="688"></li>
+                <!-- <li><img src="http://192.168.50.185/PCladyiPad/201309iPhone/lxi4/lxi49.jpg" width="320"></li> -->
+                <li><img src="images/p2-02.jpg" width="688"></li>
+              </ul>
+            </div>
+
+            <div id="scroll">
+                <ul>
+                    <li ></li>
+                    <li ><img src="images/p2-02.png" width='768' style="pointer-events:auto" ></li>
+                </ul>
+            </div>
+    </div>
+        
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script src="scrollFocusPicture/iscroll.js"></script>
+<script>
+$(document).ready(function(){ 
+    var myscroll;
+    myscroll = new scrollFocusPicture("scrollFocusPicture", {
+        snap:true,
+        flip:"y",
+        momentum: false,
+        bounce: false, 
+        bounceLock: false,
+        hScrollbar: false,
+        vScrollbar: false, 
+        imgNumber:2,//需要修改 图片数目
+        onScrollMove: function(){
+            if(myscroll.x>0){
+                myscroll.x=myscroll.x-this.options.imgNumber*this.wrapper.offsetWidth;
+            }else if(myscroll.x<-this.options.imgNumber*this.wrapper.offsetWidth){
+                myscroll.x=myscroll.x+this.options.imgNumber*this.wrapper.offsetWidth;
+            }
+        },
+        onBeforeScrollStart:function(){
+            clearInterval(t);
+        },
+    }); 
+    var  start=false,t;
+    animationStart(); 
+    Magazine.addEvent(1,function(){
+        if(!start){
+            start=true;
+            // animationStart();  
+        }
+    });
+    Magazine.addEvent(0,function(){
+        if(start){
+            start=false;
+            animationEnd();  
+        }
+    });
+    function animationStart(){
+        t=setInterval(function(){
+            myscroll.scrollToPage(myscroll.currPageX+1);
+            if(myscroll.currPageX>=myscroll.options.imgNumber) {   
+                setTimeout(function(){
+                    myscroll.scrollToPage(myscroll.currPageX-myscroll.options.imgNumber,0,0); 
+                },500)
+            } 
+        },3000) 
+    }  
+    function animationEnd(){
+        clearInterval(t); 
+        myscroll.scrollToPage(0,0,0)
+    } 
+
+    var myscroll2 ;
+    myscroll2 = new iScroll("scroll", {
+        snap:true,
+        flip:"x",
+         momentum: false,
+        hScrollbar: false,
+        vScrollbar: false,
+    },"view");
+});
+</script>
+</html>

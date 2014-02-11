@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="../../html-common/pchouse2.0/showFront/showFront.css" rel="stylesheet" type="text/css" />
+    <style>
+    /*#view{ background: url("05.jpg"); background-size: 768px 1024px; }*/
+	
+	 #bg{ position:absolute; right:0; top:0; width: 768px; height:1024px;   }
+	 #bg>li{ position:absolute;  top:0;  opacity:0;outline: solid 2px #fff; }
+	 #bg>li:nth-child(1){left:0px;}
+	 #bg>li:nth-child(2){ right:0;}
+	 #bg>li:nth-child(3){ left:0;top:440px;}
+
+	 
+	 .show #bg>li{opacity:1;-webkit-transition:all 0.5s 1s linear;}
+    #scroll2{ position: absolute;; left: 444px; top: 491px; width: 283px; height: 255px; z-index: 10; }
+    #scroll{ z-index: 100;  position: absolute; pointer-events:none;}
+	</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+	<ul id="bg">
+       <li><img src="images/01.jpg" width="402" ></li>		    
+       <li><img src="images/02.jpg" width="354" ></li>
+       <li><img src="images/03.jpg" width="402" ></li>
+	</ul>
+	<div id="scroll2" >
+       <img src="images/05.png" width="273" height='783'>
+    </div>
+     <div id="scroll" style="position:absolute; left:0;top:0">
+        <ul>
+        <li></li>
+        <li>
+            <img src="images/04.png" width="768">
+        </li>
+        </ul>
+    </div>
+</div>
+<!-- end view -->
+</body>
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+	<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+$(document).ready(function(){ 
+	 var myscroll;
+      start=false;
+//animationStart();  
+		Magazine.addEvent(1,function(){
+			 if(!start)
+			 {start=true;
+			  animationStart();  
+			 }
+		})
+		Magazine.addEvent(0,function(){
+			 if(start)
+			 {start=false;
+			  animationEnd();  
+			
+			 }
+		})
+  function  animationStart(){
+      $("#view").addClass("show")
+
+  }  
+  function  animationEnd(){
+      $("#view").removeClass("show")
+
+  } 
+ 
+
+var myscroll;
+	myscroll = new iScroll("scroll", {
+       snap:true,
+	   momentum: false,
+	   hScrollbar: false,
+	   vScrollbar: false,
+       onScrollEnd:function(){
+        if(myscroll.currPageY==0)
+        {
+            $("#scroll2").css("pointer-events","auto");
+        }else{
+            $("#scroll2").css("pointer-events","none");
+        }   
+       },
+	 },"bg");  
+
+
+var myscroll2;
+    myscroll2 = new iScroll("scroll2", {
+       snap:false,
+       momentum: true,
+       bounceLock: false,
+       hScrollbar: false,
+       vScrollbar: false,
+       onScrollMove: function(){
+         if(myscroll2.y==myscroll2.maxScrollY&&myscroll2.deltaY<0){
+                myscroll.scrollToPage(0,1,500);
+
+         }
+       }
+     });  
+
+})
+</script>
+
+
+</html>

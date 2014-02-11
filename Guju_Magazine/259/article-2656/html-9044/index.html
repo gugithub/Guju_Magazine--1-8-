@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <style>
+    #con{position: absolute;left: 0px; bottom: 0px;-webkit-transform:translateY(354px);-webkit-transition:all 0.5s;opacity: 0;-webkit-backface-visibility:hidden;}
+    #con.show{-webkit-transform:translateY(0px);opacity: 1;}
+    #tit{position: absolute;left: 575px;bottom:267px;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="scroll">
+            <ul>
+                <li>
+                    <img src="images/01.png" width="768">
+                    <img src="images/04.png" width='768' alt="" id="con">
+                    <div class="public_btn button big" style=" left:530px; bottom:267px;" id='public_btn'><div><span></span></div></div>
+                    <img src="images/03.png" width='130' alt="" id="tit">
+                </li>
+                <li><img src="images/02.png" width="768"></li>
+            </ul>
+        </div>
+
+        
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+    $(document).ready(function(){
+        var myscroll;
+        myscroll = new iScroll("scroll", {
+            snap:true,
+            momentum: false,
+            hScrollbar: false,
+            vScrollbar: false,
+        });
+        $('#public_btn').tap(function(){
+            $('#public_btn').toggle('close_btn');
+            $('#public_btn').toggle('active');
+            $('#con').toggle('show');
+        })
+    });
+</script>
+</html>

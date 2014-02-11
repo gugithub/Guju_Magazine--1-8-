@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <link href="showBigImg2.0/showBigImg.css" rel="stylesheet" type="text/css" />
+    <style>
+        #view{ background: url(04.jpg); background-size: 768px 1024px; }
+        #showBigImg_nav{ position: absolute; left: 0; top: 0;}
+        #showBigImg_nav>li{ position: absolute;/*background: rgba(0,0,0,0.5);*/}
+        #showBigImg_nav>li:nth-child(1){ width: 268px; height: 252px;  left: 40px; top: 247px; } 
+        #showBigImg_nav>li:nth-child(2){ width: 199px; height:252px;  left: 318px; top: 247px; }  
+        #showBigImg_nav>li:nth-child(3){ width: 201px; height: 252px;  left: 528px; top: 247px; }  
+        #showBigImg_nav>li:nth-child(4){ width: 268px; height: 200px;  left: 40px; top: 510px; }  
+        #showBigImg_nav>li:nth-child(5){ width: 268px; height: 200px;  left: 40px; top: 721px; }  
+        #showBigImg_nav>li:nth-child(6){ width: 411px; height: 413px;  left: 318px; top: 510px; }  
+        #linkButtom{ position: absolute; right:0; bottom: 20px; width: 150px; height: 180px; /*background: rgba(0,0,0,0.5)*/}
+        #showBigImg_showbox>div{ position: relative;}
+#scroll{ width:768px; height:1024px; overflow:hidden;position:absolute;left: 0px;top:0px;z-index: 120;pointer-events:none;}
+#scroll>ul>li{ width:768px; height:1024px; position:relative;}
+#scroll>ul>li>span{pointer-events:auto;}
+#scroll>ul>li>img{ display:block;pointer-events:auto;}
+#scroll>ul>li{display: -webkit-box;-webkit-box-orient: horizontal; -webkit-box-pack: center;}
+#scroll>ul>li.center {-webkit-box-align: center;}
+#scroll>ul>li.bottom {-webkit-box-align: end;}
+
+.myImgPosition{position: absolute;bottom:0px;}
+.myLink{width: 120px;height: 25px;position: absolute;/*background: red;opacity: 0.5;*/}
+.myLink_1{left: 180px;top: 761px;}
+.myLink_2{left: 180px;top: 793px;}
+.myLink_3{left: 100px;top: 823px;}
+    </style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+    <!-- <img src="05.jpg" width='768' style='position:absolute;pointer-events:none;left:0px;top:0px;' alt=""> -->
+<!-- 显示放大图景 -->  
+  <div id="showBigImg" >
+
+        <div id="showBigImg_showbox">
+            <div><img  src="images/showBigImg/1.jpg"  >
+                <div id="linkButtom" class="button" data-href=""></div>
+            </div>
+        </div> 
+
+        <ul id="showBigImg_nav">
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button"></li>
+            <li  class=" button "></li>
+        </ul>
+        <div id="showBigImg_prompt"  class="public_prompt up" style="left:602px;top:215px;">点击图片查看<span></span></div>
+    </div>
+
+    <div id="scroll">
+        <ul>
+            <li>
+            </li>
+            <li>
+                <img src="images/0.jpg" width="768" height='301px' class='myImgPosition' />
+                <span class="myLink myLink_1 button" data-link='http://huati.weibo.com/k/%E6%88%91%E7%9A%84%E4%B8%93%E5%B1%9E%E9%A6%99%E6%B8%AFStyle?from=510#custombrowser'></span>
+                <span class="myLink myLink_2 button" data-link='http://www.pchouse.com.cn/app/34/345171.html#custombrowser'></span>
+                <span class="myLink myLink_3 button" data-link="http://article-2666/page-0"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+    <script src="../../html-common/base/js/magazine.js"></script>
+	<script src="../../html-common/base/js/iscroll.js"></script>
+    <script src="showBigImg2.0/showBigImg.js"></script>
+<script>
+
+var showBigImg1;
+var myscroll;
+$(document).ready(function(){ 
+
+	 showBigImg1 = new showBigImg( {
+		start: function () {},//进入大图
+		end: function () {}  //退出大图
+	 });  
+var links=[
+"http://weibo.com/1858864600/A8Fl3mPr3",
+"http://weibo.com/3547813554/A6wy93dMm",
+"http://weibo.com/1960308610/A8OkQAqbR",
+"http://weibo.com/3174562385/A81wk2EJO",
+"http://weibo.com/3001570884/A9gzyeQIs",
+"http://weibo.com/2473143030/A6PGeBMP8",
+]
+$("#showBigImg_nav>li").each(function(e,i){
+     $(e).tap(function(){
+       $("#linkButtom").attr("data-href",links[i]+"#CustomBrowser")  
+     })    
+});
+
+    myscroll = new iScroll('scroll',{
+        snap:true,
+        momentum:false,
+        hScrollbar:false,
+        vScrollbar:false
+    },'view');
+
+    $('.myLink').each(function (e,i){
+        $(e).tap(function(){
+            window.location.href = $(e).attr('data-link');
+        })
+    });
+});
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public.css" rel="stylesheet" type="text/css" />
+
+    <style>
+    #view{background:url(bg.jpg); background-size: 768px 1024px;}
+    #p{position:absolute; left:206px; top: 202px}
+    #button{position:absolute; left:373px; top:313px; pointer-events:none;}
+
+    .show #p{-webkit-animation:yao 1s linear infinite;}
+ @-webkit-keyframes yao{
+    0%{-webkit-transform:rotate(0); }
+    50%{-webkit-transform: rotate(5deg);}
+    100%{-webkit-transform: rotate(0); }
+
+} 
+	</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+	<!-- <img src="Click.jpg" width="768" alt="" style="position:absolute;"> -->
+<div id="view">
+	<img id="p" src="images/p.png" width="418" class="button">
+	<img id="button"  src="images/Click.png" width="78">
+
+
+<!-- end view -->
+</body>
+
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+
+
+
+
+
+<script>
+
+
+
+
+$(document).ready(function(){ 
+	 
+      start=false;
+// animationStart();  
+		Magazine.addEvent(1,function(){
+			 if(!start)
+			 {start=true;
+			  animationStart();  
+			
+			 }
+		})
+		Magazine.addEvent(0,function(){
+			 if(start)
+			 {start=false;
+			  animationEnd();  
+			
+			 }
+		})
+  function  animationStart(){
+      $("#view").addClass("show")
+
+  }  
+  function  animationEnd(){
+      $("#view").removeClass("show")
+  } 
+    $("#p").tap(function(){
+        window.location.href="http://www.pchouse.com.cn/app/34/347611.html#custombrowser"
+    })
+})
+</script>
+
+
+</html>

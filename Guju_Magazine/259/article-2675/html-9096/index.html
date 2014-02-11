@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <style>
+    #bg{position: absolute;left: 0px;top: 0px;opacity:0;}
+    .show #bg{opacity: 1;-webkit-transition:opacity 0.5s 0.5s;}
+    #text{position: absolute;left: 0px;top: 0px;opacity:0;-webkit-transform:translate(0px,1024px);}
+    .show #text{opacity: 1;-webkit-transform:translate(0px,0px);-webkit-transition: all 0.5s 1s;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="bg"><img src="p1-01.jpg" width="768"></div>
+        <div id="text"><img src="p1-02.png" width="768"></div>
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script>
+    
+    $(document).ready(function(){
+        Magazine.addEvent(1,function(){
+            $('#view').addClass('show');
+        })
+        Magazine.addEvent(0,function(){
+            $('#view').removeClass('show');
+        })
+    })
+</script>
+</html>

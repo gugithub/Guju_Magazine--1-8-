@@ -1,0 +1,65 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{ }
+/* debug */
+#view{ position:relative; width:768px; height:1024px; overflow:hidden; text-align:center;-webkit-perspective:2000;  background:url(../bg.jpg); background-size:768px 1024px;}
+
+#view img{ position:absolute;}
+@-webkit-keyframes rotate{
+	0%{-webkit-transform:scale(1);opacity:0; }
+   60%{-webkit-transform:scale(1);opacity:1; }
+	100%{-webkit-transform:scale(1.5);opacity:0; }
+}
+
+
+@-webkit-keyframes show{
+	0%{opacity:0}
+	20%{opacity:1}
+	80%{opacity:1}
+	100%{opacity:0}
+}
+
+#p1,#p2{ position: absolute; width: 100%;height: 100% ;}
+#ImgList{ position: absolute; left: -10px;  top: -10px; border: solid 10px #e22239; width: 100%; height: 100%;-webkit-transition:opacity 0.5s ease-out;pointer-events:none;background: url(../images/bg/bg2-1.jpg) top no-repeat,url(../images/bg/bg2-2.jpg) bottom no-repeat; background-size: 768px 512px;}
+#ImgList.hide{ opacity:0;}
+#ImgList>li{ position: absolute; left: 0;top: 0;width: 100%; height: 100%;opacity:0; -webkit-transition:opacity 0.5s ease-out;}
+#ImgList>li.show{ opacity:1;-webkit-transition:opacity 0.5s ease-in;}
+#ImgList>li:nth-child(1){background: url(../images/bg/bg1-1.jpg) top no-repeat,url(../images/bg/bg1-2.jpg) bottom no-repeat; background-size: 768px 512px;}
+#ImgList>li:nth-child(2){background: url(../images/bg/bg2-1.jpg) top no-repeat,url(../images/bg/bg2-2.jpg) bottom no-repeat; background-size: 768px 512px;}
+#ImgList>li:nth-child(3){background: url(../images/bg/bg3-1.jpg) top no-repeat,url(../images/bg/bg3-2.jpg) bottom no-repeat; background-size: 768px 512px;}
+
+#sImgList{ position: absolute; left: 567px;  top: 793px; border: solid 2px #e22239; width: 145px; height: 169px;}
+#sImgList>li{ position: absolute; left: 0;top: 0;width: 100%; height: 100%;opacity:0; -webkit-transition:opacity 0.5s ease-out;}
+#sImgList>li.show{ opacity:1;-webkit-transition:opacity 0.5s ease-in;}
+#sImgList>li:nth-child(1){background: url(../images/sbg/012.jpg) top no-repeat; background-size: 145px; }
+#sImgList>li:nth-child(2){background: url(../images/sbg/013.jpg) top no-repeat; background-size: 145px ;}
+#sImgList>li:nth-child(3){background: url(../images/sbg/014.jpg) top no-repeat; background-size: 145px ;}
+
+#textList{ position: absolute; left: 490px; top: 973px; color: #fff}
+#textList>li{ position: absolute; width: 300px; height: 20px; line-height: 14px; font-size: 14px; text-align: center;opacity:0;-webkit-transition:opacity 0.5s ease-out; }
+#textList>li.show{ opacity:1;}
+#button{-webkit-animation:rotate 2s infinite; position:absolute; width:102px; height:50px; left:78px; top:504px; background:url(../images/04.png); background-size:102px 50px; -webkit-transition:-webkit-transform 0.5s ease-out; -webkit-animation:rotate 2s infinite;}
+#bbg{ position:absolute;  left:78px; top:504px; }
+#p2{opacity:0; pointer-events:none; background: url(../images/bg/bg4-1.jpg) top no-repeat,url(../images/bg/bg4-2.jpg) bottom no-repeat; background-size: 768px 512px;}
+#p2.show{opacity:1; -webkit-transition:opacity 0.5s;pointer-events:auto; }
+#canvas{ position:absolute; width:100%; height:100%; left:-80px; top:-60px; }
+#canvas img{ position:absolute; -webkit-transform-style: preserve-3d; }
+#imgNav{position: absolute; left: 105px; bottom:40px; width: 400px; height: 160px; pointer-events:none;}
+#imgNav.show{pointer-events:auto; }
+#imgNav>li{ width: 80px; height: 80px; float: left;}
+#canvas{ background-repeat: no-repeat; background-position: center; }
+#bgNav{ position: absolute;; width:150px; right:50px;top: 240px ; height: 600px}
+#bgNav>li{ height: 100px; }
+
+#zhishi{  position: absolute;left:560px; top:283px; border-bottom: 10px solid transparent;
+border-top: 10px solid transparent;border-right: 10px solid #e22239 ;-webkit-transition:all 0.5s linear;opacity:0;  }
+#zhishi.c0{opacity:1; -webkit-transform:translate3d(0,0,0)}
+#zhishi.c1{opacity:1; -webkit-transform:translate3d(0,120px,0)}
+#zhishi.c2{opacity:1; -webkit-transform:translate3d(0,240px,0)}
+#zhishi.c3{opacity:1; -webkit-transform:translate3d(0,350px,0)}
+#zhishi.c4{opacity:1; -webkit-transform:translate3d(0,450px,0)}
+
+#buttonWeibo{ position: absolute; left: 360px; top: 20px;}
+#imgNavBg{ position: absolute;  bottom: 0; opacity:0;-webkit-transition:all 0.5s linear;}
+#imgNavBg.show{opacity:1; }

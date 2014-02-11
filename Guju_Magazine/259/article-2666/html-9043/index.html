@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <style>
+       #scroll{pointer-events:none;}
+       #scroll .link,#scroll #photoshut{pointer-events:auto;}
+	   #ios5{position:absolute; bottom:0px; left:0; width: 768px;  height: 381px;}
+	   #ios5 #clip{position: absolute;left: 550px;top:-70px;}
+	   #ios6{position:absolute; bottom:0px; left:0; width: 768px; height: 425px;display: none; }
+	   #ios6 #clip{position: absolute;left: 550px;top:-70px;}
+	   .button{ width:100px; height:60px; position:absolute; /*background: rgba(0,0,0,0.5)*/}
+	   #input,#reinput{ height: 60px; background:rgba(0,0,0,0.5);opacity:0;}
+	   #xiangkuang{position:absolute; width: 768px; height:1024px; background: rgba(0,0,0,0.8); top:0; left:0; -webkit-transform:translate3d(0,1024px,0);-webkit-transition:-webkit-transform 0.5s ; z-index: 200;
+                   display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: center;-webkit-box-orient: vertical;
+	   }
+	   #xiangkuang.show{-webkit-transform:translate3d(0,0,0);}
+	   #photo{ width:556px; border:1px solid #ccc; left: 83px; top:150px;  }
+	   #front{position:absolute; z-index: 100; pointer-events:none;}
+	 #photoWrap{ padding-top: 50px;  position: relative;}
+	 #imgBg{ z-index: 10; padding: 50px 30px 80px;background: url(images/img/6.png) #fff no-repeat bottom center ; background-size: 500px 63px;width: 556px; position: relative; -webkit-box-shadow:10px 10px 10px rgba(0,0,0,0.7) ; }
+
+	 #bg{position: absolute;}
+	 #bg .item{position: absolute;-webkit-box-shadow: 3px 3px 7px #999;-webkit-transform:translateX(-500px) rotate(360deg);-webkit-transition:all 1s ease;}
+	 #bg .item:nth-child(1){left: -17px;top: 67px;}
+	 #bg .item:nth-child(2){left: 104px;top: 18px;-webkit-transition-delay:0.7s;}
+	 #bg .item:nth-child(3){left: -30px;top: 480px;}
+	 #bg .item:nth-child(4){left: 34px;top: 387px;-webkit-transition-delay:0.7s;}
+	 #bg .item:nth-child(5){left: 45px;top: 630px;-webkit-transition-delay:1.5s;}
+	 #bg .item:nth-child(6){left: 400px;top: 750px;-webkit-transform:translateX(500px) rotate(360deg);}
+     
+     #bg.active .item{}
+	 #bg.active .item:nth-child(1){left: -17px;top: 67px;-webkit-transform:translateX(0) rotate(-5deg);}
+	 #bg.active .item:nth-child(2){left: 104px;top: 18px;-webkit-transform:translateX(0) rotate(15deg);}
+	 #bg.active .item:nth-child(3){left: -30px;top: 480px;-webkit-transform:translateX(0) rotate(-5deg);}
+	 #bg.active .item:nth-child(4){left: 34px;top: 387px;-webkit-transform:translateX(0) rotate(6deg);}
+	 #bg.active .item:nth-child(5){left: 45px;top: 630px;-webkit-transform:translateX(0) rotate(-5deg);}
+	 #bg.active .item:nth-child(6){left: 400px;top: 750px;-webkit-transform:translateX(0) rotate(5deg);}
+
+	 #topPicture{position: absolute;top: 0px;}
+	 #joinbuttonPic{position: absolute;left: 433px;top: 682px;-webkit-transform:rotate(11deg);}
+	 #joinbuttonPic.swing{-webkit-animation:flash 1s  linear infinite;}
+	 @-webkit-keyframes flash{
+	 	0%{-webkit-transform:rotate(11deg);}
+	 	33%{-webkit-transform:rotate(5deg);}
+	 	66%{-webkit-transform:rotate(17deg);}
+	 	100%{-webkit-transform:rotate(11deg);}
+	 }
+	 #joinbutton{position: absolute;width:170px;height: 100px;left: 433px;top: 660px;pointer-events:auto; /*background: red;opacity: 0.5;*/}
+	</style>
+<title></title>
+</head>
+<body>
+<div id="view">
+<!-- <img src="bg.jpg" width='768px' style='position:absolute;' alt=""> -->
+<div id="bg">
+	<img src="images/1.jpg" width="336" class="item">
+	<img src="images/2.jpg" width="336" class="item">
+	<img src="images/3.jpg" width="302" class="item">
+	<img src="images/4.jpg" width="245" class="item">
+	<img src="images/5.jpg" width="276" class="item">
+	<img src="images/6.jpg" width="382" class="item">
+</div>
+<div id="topPicture">
+	<img src="images/01.png" width="768">
+</div>
+<div id="joinbuttonPic" >
+	<img src="images/00.png" width="151" >
+</div>
+<div id="scroll">
+    <ul>
+        <li>
+        	<span id="joinbutton" class='button'></span>
+        </li>
+        <li>
+        	<div id="ios5" >
+        		<img src="images/ios5.jpg" width="768">
+	            <span data-href="http://weibo.com#CustomBrowser" class="button link" style="left:280px;top:90px;"></span>
+	            <span data-href="http://bbs.pchouse.com.cn/topic-585384.html#CustomBrowser" class="button link" style="left:280px;top:160px;"></span>
+                <img src="images/09.png" width="113" id="clip">
+            </div>
+            <div id="ios6">
+            	<img src="images/ios6.jpg" width="768">
+	            <span class="button" id='photoshut' style="left:296px;top:85px;"><input id="input" class="button" type="file" accept="image/*" capture /  ></span>
+	            <span data-href="http://weibo.com#CustomBrowser" class="button link" style="left:290px;top:169px;"></span>
+	            <span data-href="http://bbs.pchouse.com.cn/topic-585384.html#CustomBrowser" class="button link" style="left:287px;top:238px;"></span>
+	            <img src="images/09.png" width="113" id="clip">
+            </div>
+
+
+        </li>
+    </ul>
+</div>
+
+
+<div id="xiangkuang" >
+	<div id="photoWrap">
+		<span id="sendweibo" href="" class="button" style="left:400px;top:-50px; z-index:100; "><img src="images/img/5.png" width="212"></span>
+        <span id="close" href="" class="button" style="right:-70px;top:180px;"><img src="images/img/3.png" width="95"></span>
+        <span class="button" style="right:-70px;top:269px;"><img src="images/img/4.png" width="95" style="absolute"><input id="reinput" type="file" accept="image/*" capture  / ></span>
+        <div id="imgBg">
+        	<img id="photo" src="images/img/loading.png" width="556">
+        </div>
+	</div>
+</div>
+</div>
+</div>
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+$(document).ready(function(){
+	 $("#close").tap(function(){
+         $("#xiangkuang").removeClass("show")
+	 })
+
+	 $("#sendweibo").tap(function(){
+	     window.location.href="sinaweibo:   #养生过冬我支招# @PChouse家居杂志 iPad版 "
+	 })
+ function IOSVersion(){   //获取IOS版本
+	var n = 4;
+	if(Magazine.parseAppMsg("os_version")){
+		n = parseInt(Magazine.parseAppMsg("os_version"))
+	}else if(window.clientInformation.userAgent){
+	    // var index=window.clientInformation.userAgent.indexOf("CPU OS");
+	    var index=window.clientInformation.userAgent.indexOf("CPU OS");
+		// return window.clientInformation.userAgent.slice(index+10,index+11);
+
+
+	    n = window.clientInformation.userAgent.slice(index+7,index+8);
+	}else{
+		n = 4
+	}
+    return n
+}
+$("#input,#reinput").bind("touchstart",function(e){
+	e.stopPropagation();
+})
+
+if(IOSVersion()>=6){ //系统大于IOS6的情况才让按钮显示
+//	if(1){
+
+    $("#ios6").show();
+    $("#ios5").hide();
+};
+
+var $photo=$("#photo");
+var input = document.querySelector('#input');
+var reinput = document.querySelector('#reinput');
+input.onchange = function () {
+  var file = input.files[0];
+  displayAsImage(file);
+
+};
+reinput.onchange = function () {
+  var file = reinput.files[0];
+  displayAsImage(file);
+
+};
+function displayAsImage(file) { //显示图片
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  $("#xiangkuang").addClass("show");
+  $photo.attr("src","images/img/loading.png");
+  reader.onload = function (e) {
+      var dataURL = e.target.result;
+      $photo.attr("src",dataURL);
+      $photo.show();
+
+  }
+}
+
+var myscroll;
+myscroll = new iScroll("scroll", {
+    snap:true,
+    momentum: false,
+    hScrollbar: false,
+    vScrollbar: false,
+},'view');  
+
+Magazine.addEvent('1',function(){
+	$('#bg').addClass('active');
+    setTimeout(function(){
+        $('#joinbuttonPic').addClass('swing');
+	},2000);
+});
+Magazine.addEvent('0',function(){
+	$('#bg').removeClass('active');
+	$('#joinbuttonPic').removeClass('swing');
+});
+$('#joinbutton').tap(function(){
+	myscroll.scrollToPage(0,1,500)
+})
+
+
+
+});
+
+
+</script>
+</html>

@@ -1,0 +1,33 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{}
+#view{font:nomral 16px TrebuchetMS;position:relative; overflow:hidden; width:528px; height:590px;}
+/* debug */
+/*.button{background:rgba(0,0,0,0.3);}*/
+
+#view{ -webkit-perspective:2000px; position:relative; width:768px; height:1024px ; background:url(../bg.jpg); background-size:768px 1024px;}
+
+#play{ position:absolute; width:528px; height:590px; left:120px; top:104px;}
+#content{ position:relative; background: no-repeat left top;  }
+#content li{ position:absolute; -webkit-transform-origin:left bottom; }
+#content li.come{ opacity :0 ;-webkit-animation:come 0.5s;}
+#content li.out{ opacity :0; -webkit-animation:  ;}
+@-webkit-keyframes come{
+	0%{opacity:0; }
+	100%{opacity:1;}
+}
+
+
+
+#navWrap{position:absolute; right:0; top:0; width:80px; height:590px;}
+#nav{position:absolute; right:0; top:0; width:72px;-webkit-transition:all 0.5s; background:url(../images/navBg.png) 0 0 no-repeat; padding:5px 4px 0 11px; background-size:87px 104px; }
+#nav li{ width:72px; height:95px; margin-bottom:10px;}
+
+#nav.current1{ background-position:0 0;}
+#nav.current2{ background-position:0 105px;}
+#nav.current3{ background-position:0 210px;}
+#nav.current4{ background-position:0 315px;}
+#nav.current5{ background-position:0 420px;}
+
+.link{ position:absolute; width:100px; height:70px;  /*background: rgba(0,0,0,0.5) */}

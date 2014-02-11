@@ -1,0 +1,24 @@
+﻿/* reset */
+html,body,* {-webkit-text-size-adjust:none;-webkit-user-select:none;padding:0;margin:0;}
+ul,li{list-style:none;}
+body{ background:; font:14px/1.5em ; }
+/* debug */
+/*.button{background:rgba(0,0,0,0.5);}*/
+
+    img{display: block;}
+    #bgscroller{position: absolute;}
+    #bgscroller>img{height:256px;}
+    
+    #bg,#bgscroll{position:absolute; width: 768px; height:1024px; left: 0;top:0; overflow: hidden;}
+    #bgScrollWrap{ height:1024px; pointer-events:none;}
+    #frontImg{position:absolute; left: 0;top:0; z-index: 10; pointer-events:none; }
+   #bgScroll_centre{ position:absolute; background-color:rgba(0,0,0,0.8); color:#FFF; z-index: 200; border:1px solid #000; padding:10px 20px; left:48%; top:48%; text-align:center; line-height:25px; -webkit-transition:all 0.3s; opacity:0;  border-radius:5px; z-index:100; }
+   #bgScroll_centre.show{opacity:1;}
+   #frontImg{ opacity:0;pointer-events:none;-webkit-transition:opacity 0.5s; width: 768px; pointer-events:none;}
+   #frontImg.show{opacity:1;pointer-events:auto;}
+
+
+
+
+
+

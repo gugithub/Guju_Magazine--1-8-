@@ -1,0 +1,262 @@
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- disable zooming -->
+        <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+        <title>
+            iphone
+        </title>
+           <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+        /*#view{ background:url(0.jpg);background-size: 768px 1024px;  }*/
+        /*#view{background: gray;}*/
+        /*#b1{ position: absolute; width:2206px; height: 380px; background: url(images/05.png) repeat-x; background-size:719px 380px;bottom:200px;left:719px;-webkit-transform:translate3d(0,1000px,0);}*/
+        #b2{ position: absolute; width:2172px; height: 415px; background: url(images/building.png) repeat-x; background-size:1404px 415px;bottom:160px;-webkit-transform:translate3d(0,1000px,0);}
+        #road{ position: absolute; width:768px; height: 334px;  background: url(images/01.png) repeat-x; background-size:768px 334px; bottom:0px; -webkit-transform:translate3d(0,334px,0); z-index: 3;}
+
+        .didian{ position: absolute; width: 90px; height:104px;-webkit-animation:an_jump 1.5s ease infinite;}
+        .didian.an_jump{}
+        @-webkit-keyframes an_jump {
+          0%{-webkit-transform:translate3d(0,0,0);}
+          50%{-webkit-transform:translate3d(0,15px,0);}
+          100%{-webkit-transform:translate3d(0,0,0);}
+        }
+        #textW{ background: #fff; width: 768px; height: 1024px; pointer-events:none; -webkit-transform:translate3d(0,1024px,0);-webkit-transition:-webkit-transform 1s; }
+        #textW.show{ pointer-events:auto; opacity:1; -webkit-transform:translate3d(0,0,0);}
+        #text>img{ display: block; width: 100%;}
+        .riqi{ position: absolute;}
+        #text .shan{ position: absolute;-webkit-animation:shan 3s linear infinite;}
+        @-webkit-keyframes shan{
+         0%{opacity:0;}
+         49%{opacity:0; }
+         50%{opacity:1;}
+         99%{opacity:1;}
+         100%{opacity:0;}
+        }
+
+        /*发送微博成功*/
+        #message{ position: absolute;; left: 0px; top: 0px; width: 100%; height: 100%;display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: center;-webkit-box-orient:vertical; background: rgba(0,0,0,0.8); opacity: 0; pointer-events:none;-webkit-transition:opacity 0.5s linear; z-index: 101}
+        #message>div{ text-align: center;}
+        #message>div>img{ display: inline-block; -webkit-transform:translate(0,-30px);-webkit-transition:-webkit-transform 0.5s linear;}
+        #message>div>p{padding: 10px 0; color: #fff;}
+        #message>#sendWeibo,#message>#warn{ display: none;}
+        #message.sendWeibo>#sendWeibo{ display: block;}
+        #message.sendWeibo>#sendWeibo>img{ -webkit-transform:translate(0,0px); }
+        #message.sendWeibo{opacity:1; }
+
+        #message.warn>#warn{ display: block;}
+        #message.warn{opacity:1; }
+
+        #shop{ position: absolute; width: 100px; height: 100px; right:20px; bottom:20px;  }
+
+        #warn{ padding: 5px 20px; background:#fff; border-radius:10px;}
+        #message>#warn>p{color: #333; }
+        #front{ position: absolute; left: 0; top: 0; pointer-events:none;-webkit-transition:opacity 0.5s linear; opacity:0; -webkit-backface-visibility:hidden; }
+        #front.show{ opacity:1;}
+
+        @-webkit-keyframes up{
+         0%{-webkit-transform:translate3d(0,0,0);}
+         50%{-webkit-transform:translate3d(0,-3px,0) rotate(0deg); }
+         100%{-webkit-transform:translate3d(0,0px,0);}
+       }
+       
+       .wheel{position: absolute;width:416px;height:416px;pointer-events:none;}
+       .wheel img{position: absolute;}
+       .wheel img:nth-child(1){left: 10px;top: 10px;}
+       .wheel img:nth-child(2){left: 110px;top: 200px;}
+       .coverLayer{position: absolute;width: 490px;height: 415px;pointer-events:none;}
+
+       .wheel.rotate img.wh{-webkit-animation:an_rotate 12s linear infinite;}
+       @-webkit-keyframes an_rotate{
+        0%{-webkit-transform:rotate(0deg);}
+        33%{-webkit-transform:rotate(-120deg);}
+        66%{-webkit-transform:rotate(-240deg);}
+        100%{-webkit-transform:rotate(-360deg);}
+       }
+        </style>
+        <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div id="view" class="fullpage">
+          <!--  <img id="front" src="images/02.png" width="768" /> -->
+          <div id="bg">
+                <div id="road"></div>
+                <!-- <div id='b1'></div> -->
+                <div id="b2">
+                     <div class="button didian" style="left:1414px; top:130px;" data-text="2" data-amount="2" data-height="1507">
+                         <img src='images/06.png' width='90' />
+                     </div>
+                     <div class="button didian" style="left:1659px; top:-20px;" data-text="1" data-amount="2" data-height="1602">
+                         <img src='images/07.png' width='90' />
+                     </div>
+                     <div class="button didian" style="left:10px; top:130px;" data-text="2" data-amount="2" data-height="1507">
+                         <img src='images/06.png' width='90' />
+                     </div>
+                     <div class="button didian" style="left:255px; top:-20px;" data-text="1" data-amount="2" data-height="1602">
+                         <img src='images/07.png' width='90' />
+                     </div>
+                     <div class="button didian" style="left:908px; top:0px;" data-text="3" data-amount="3" data-height="2300">
+                       <img src='images/08.png' width='90' />
+                     </div>
+                     <div class="button didian" style="left:1200px; top:35px;" data-text="4" data-amount="2" data-height="1500">
+                       <img src='images/09.png' width='90' />
+                     </div>
+
+                  <div class='wheel'style='left: 1748px;top:-56px;'>
+                    <img src='images/03.png' width='406'  height='406' class='wh'/>
+                    <img src='images/014.png' width='192' class='jia'/>
+                    <img src='images/02.png' width='406' height='406' class='wh'/>
+                  </div>  
+                  <div class='wheel'style='left: 344px;top:-56px;'>
+                    <img src='images/03.png' width='406'  height='406' class='wh'/>
+                    <img src='images/014.png' width='192' class='jia'/>
+                    <img src='images/02.png' width='406' height='406' class='wh'/>
+                  </div>  
+                  <div class='coverLayer' style='left:1404px; top:0px;'>
+                    <img src = 'images/04_2.png' width='490'  />
+                  </div>
+                  <div class='coverLayer' style='left:0px; top:0px;'>
+                    <img src = 'images/04_2.png' width='490'  />
+                  </div>
+
+                  <!-- <div class="public_prompt up" style="left:25px; top:100px;">查看更多<span></span></div> -->
+                </div>
+          </div>
+          <div id="textW" >
+              <div id="text"></div>
+          </div>
+
+        <div id="close_btn" class=" button public_btn close_btn rt1" style="-webkit-backface-visibility:hidden; display:none"><div><span></span></div></div>
+        </div>
+    </body>
+    <script src="../../html-common/base/js/pcauto1.1.js"></script>
+    <script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+    <script>
+$(document).ready(function(){
+var myscroll,
+    $b2=$("#b2"),
+    $road=$("#road"),
+    $didian=$(".didian"),
+    $front=$("#front"),
+    curX=0,
+    t,
+    start=false,
+    mark=false;
+
+//animationStart();
+     Magazine.addEvent(1,function(){
+       if(!start)
+        {
+          start=true;
+          animationStart();
+        }
+    })
+    Magazine.addEvent(0,function(){
+      if(start)
+         {
+          start=false;
+          animationEnd();
+         }
+    })
+
+   function animationStart(){
+   if(!mark){
+      $("#textW").removeClass("show");
+      $("#close_btn").hide();
+      $b2.css({"-webkit-transform":"translate3d("+ curX+"px,0px,0px)","-webkit-transition":"-webkit-transform 1.5s "});
+      $road.css({"-webkit-transform":"translate3d(0px,0px,0px)","-webkit-transition":"-webkit-transform 0.5s"});
+      setTimeout(function(){
+        startAnimation();
+        $front.addClass("show");
+        mark=true;
+        $('.wheel').addClass('rotate');
+        // $('.didian').addClass('an_jump');
+      },1800)
+     }
+   }
+
+   function animationEnd(){
+       window.history.go(0);
+   }
+
+   function EndAnimation(){
+    if( mark){
+    $front.removeClass("show");
+      $b2.css({"-webkit-transform":"translate3d("+ curX+"px,1000px,0px)","-webkit-transition":"-webkit-transform 1s "});
+     clearInterval(t);
+      $("#textW").addClass("show");
+      $("#close_btn").show();
+      myscroll.refresh();
+      myscroll.scrollTo(0,0,0);
+      setTimeout(function(){
+            $road.css({"-webkit-transform":"translate3d(0px,334px,0px)","-webkit-transition":"-webkit-transform 0.5s"});
+             mark=false;
+             $('.wheel').removeClass('rotate');
+             // $('.didian').removeClass('an_jump');
+      },1300)
+    }
+   }
+
+  function startAnimation(){
+    t=setInterval(function(){
+       if(curX<=-1404){
+          curX=0;
+       }
+       curX-=1;
+       transform()
+     },6)
+  }
+
+
+   function transform(){
+      $b2.css({"-webkit-transform":"translate3d("+ curX+"px,0px,0px)","-webkit-transition":"-webkit-transform 0ms"});
+      $road.css({"-webkit-transform":"translate3d(0px,0px,0px)","-webkit-transition":"-webkit-transform 0ms"});
+   }
+
+$didian.each(function(e){
+    $(e).tap(function(){
+      EndAnimation() ;
+       // window.location.href="adclick:2013.9海福乐点击"
+      if(mark )
+      {
+         $(".public_prompt").hide();
+         var text=$(e).attr("data-text");
+         var height=$(e).attr("data-height");
+         var amount=$(e).attr("data-amount");
+         var str="";
+         console.log('height:',height)
+         for(i=1;i<=amount;i++){
+          str+='<img src="images/images/0'+ text +'_0'+ i +'.jpg">'
+         }
+
+        $("#text").html(str).css("height",height+"px");
+        myscroll.refresh();
+        myscroll.scrollTo(0,0,0);
+      }
+    })
+})
+
+ $("#close_btn").tap(function(){
+
+    animationStart();
+
+ })
+
+  myscroll = new iScroll("textW", {
+    snap:false,
+     momentum: true,
+     hScrollbar: false,
+     vScrollbar: false,
+     hideScrollbar:false,
+   });
+
+})
+</script>
+</html>
+
+
+<!-- <script src="http://192.168.20.98:8555/target/target-script-min.js#anonymous"></script> -->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- disable zooming -->
+        <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+        <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+        <link href="../../html-common/pchouse2.0/showBigImg2.0/showBigImg.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            body{
+                /*background: url(http://192.168.50.82/2013/ipad/jiaju/9yue/disankongjian/08.jpg)no-repeat;width: 768px;height: 1024px;background-size: 768px 1024px;*/
+            }
+        </style>
+        <title>全屏滚动</title>
+    </head>
+    <body>
+        <div id="view">
+        <!-- 显示放大图景 -->  
+            <div id="showBigImg" >
+                <div id="showBigImg_showbox">
+                    <img src="images/showBigImg/1.jpg">
+                </div> 
+                <ul id="showBigImg_nav">
+                <li  class="public_btn button  clickBtn" id='clickBtn' style="left:75px;top:400px;"><div><span></span></div></li>
+                </ul>
+                <div id="showBigImg_prompt"  class="public_prompt dowm" style="left:71px;top:465px;">查看更多<span></span></div>
+            </div>
+        </div>
+        <!-- end view -->
+    </body>
+    <script src="../../html-common/base/js/pcauto1.1.js"></script>
+    <script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/pchouse2.0/showBigImg2.0/showBigImg.js"></script>
+    <script>
+    var showBigImg1;
+    $(document).ready(function(){ 
+        showBigImg1 = new showBigImg( {
+            start: function () {},//进入大图
+            end: function () {}  //退出大图
+        });  
+    })
+</script>
+</html>

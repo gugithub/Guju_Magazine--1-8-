@@ -1,0 +1,30 @@
+.arr  {
+    position:fixed;
+	right:0px;
+	bottom:10px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid rgba(0,0,0,0.6);
+	-webkit-animation:prompt 1.5s ease infinite;
+}
+
+
+
+
+
+.arr_white  {
+	border-top: 5px solid rgba(255,255,255,0.6);
+}
+
+@media screen and (min-width:765px){
+.arr  {
+	right:10px;
+}
+}
+
+
+@-webkit-keyframes prompt{
+	0%{-webkit-transform:translate3d(0,0,0);}
+	50%{-webkit-transform:translate3d(0,5px,0);}
+	100%{-webkit-transform:translate3d(0,0,0);}
+}

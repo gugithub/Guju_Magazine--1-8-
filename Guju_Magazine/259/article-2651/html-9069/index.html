@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- disable zooming -->
+	<meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+<style>
+/*#view{background: url(02.jpg) no-repeat;background-size: 768px 1024px;}*/
+  .link_btn{position:  absolute; width: 60px; height: 60px; pointer-events:auto; /*background: rgba(0,0,0,0.5);*/} 
+
+
+
+     #showFront_front{-webkit-transform:translate(0px,-358px);  position: absolute;-webkit-transition:all 0.8s; }
+     #showFront_front.show{ opacity:1; -webkit-transform:translate(0,0px);pointer-events:auto;}
+
+</style>
+
+<title>全屏滚动</title>
+</head>
+<body>
+<div id="view">
+  <!-- <img src="02.jpg" width='768' style='position:absolute;' alt=""> -->
+    <div class="button link_btn" style="left:230px; top:375px;"></div> 
+    <div class="button link_btn" style="left:450px; top:375px;"></div>  
+    <div class="button link_btn" style="left:685px; top:375px;"></div>  
+    <div class="button link_btn" style="left:205px; top:645px;"></div> 
+    <div class="button link_btn" style="left:450px; top:645px;"></div>  
+    <div class="button link_btn" style="left:690px; top:645px;"></div>  
+    <div class="button link_btn" style="left:200px; top:935px;"></div> 
+    <div class="button link_btn" style="left:445px; top:935px;"></div>  
+    <div class="button link_btn" style="left:685px; top:935px;"></div>  
+
+
+
+<div id="scroll" style="pointer-events:none">
+    <ul>
+        <li>
+           
+        </li>
+        <li class="bottom" style="position:relative">
+            <img src="P2-01.jpg" width="768" >
+            <div class="button link_btn" style="width:240px; height:130px; left:490px;bottom:20px;"></div> 
+        </li>
+    </ul>
+</div>
+
+
+<!-- 显示前图 -->
+<!--    <img id="showFront_front" style="left:auto; top:0px;right:47px;;" src="images/p2.jpg" width="193" class="button" data-href="sinaweibo:  #向TA提问# 《森林涅“盘”》 @马介休san @PChouse家居杂志">
+   <div id="showFront_button"  class="public_btn button  rt1" ><div><span></span></div></div> -->
+
+</div>
+<!-- end view -->
+</body>
+	<script src="../../html-common/base/js/pcauto1.1.js"></script>
+	<script src="../../html-common/base/js/magazine.js"></script>
+    <script src="../../html-common/base/js/iscroll.js"></script>
+    <script src="../../html-common/pchouse2.0/showFront/showFront.js"></script>
+<script>
+$(document).ready(function(){ 
+var myscroll,showFront1;
+    var link=[
+'http://detail.tmall.com/item.htm?id=20886147495&ali_trackid=2:mm_24457532_0_0,v444Zsea9v:1378347314_6k2_911849812&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=19287676770&ali_trackid=2:mm_24457532_0_0,gjpiZsea9v:1378347374_6k4_61789430&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=7713384470&ali_trackid=2:mm_24457532_0_0,idetZsea9v:1378347414_6k3_1372130718&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=16188134376&ali_trackid=2:mm_24457532_0_0,h62pZsea9v:1378347464_6k1_51523742&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=18330977107&ali_trackid=2:mm_24457532_0_0,vqv8Zsea9v:1378347508_6k3_403919776&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=17601946368&ali_trackid=2:mm_24457532_0_0,v3ifZsea9v:1378347522_6k2_181923812&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=21409568862&ali_trackid=2:mm_24457532_0_0,tuhhZsea9v:1378347546_6k2_401529923&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=20078435345&ali_trackid=2:mm_24457532_0_0,vqv9Zsea9v:1378347584_6k2_434592815&spm=2014.12518207.1.0',
+'http://detail.tmall.com/item.htm?id=12275881316&ali_trackid=2:mm_24457532_0_0,j2poZsea9v:1378347599_6k4_1525213134&spm=2014.12518207.1.0',
+'http://m.pclady.com.cn/'
+]
+
+
+
+
+
+
+    showFront1 = new showFront( {
+        buttonId: "showFront_button",
+        start: function () {},
+        end: function () {}
+     });  
+     
+$("#showFront_front").tap(function(){
+   $(this).removeClass("show")
+   $("#showFront_button").removeClass("close_btn")
+
+})
+    $(".link_btn").each(function(e,i){
+        $(e).tap(function(){
+            window.location.href=link[i]+"#custombrowser";
+            setTimeout(function(){
+             window.location.href="adclick:201310优品"+i; 
+            },100)
+        })
+    });
+
+	myscroll = new iScroll("scroll", {
+       snap:true,
+	   momentum: false,
+	   hScrollbar: false,
+	   vScrollbar: false,
+	 },"view");  
+})
+</script>
+
+
+</html>

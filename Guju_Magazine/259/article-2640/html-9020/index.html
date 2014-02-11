@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- disable zooming -->
+    <meta name="viewport" content="initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="../../html-common/public2.0.css" rel="stylesheet" type="text/css" />
+    <title>全屏滚动</title>
+    <style>
+    .link{position: absolute;width: 200px;height: 200px;/*background: red;opacity: 0.5;*/}
+    #samsumg{left: 30px;top: 370px;}
+    #lenovo{left: 250px;top: 290px;}
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="scroll">
+            <ul>
+                <li></li>
+                <li>
+                    <img src="P2.png" width="768">
+                    <span id="samsumg" class='button link'></span>
+                    <span id="lenovo"  class='button link'></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- end view -->
+</body>
+<script src="../../html-common/base/js/pcauto1.1.js"></script>
+<script src="../../html-common/base/js/magazine.js"></script>
+<script src="../../html-common/base/js/iscroll.js"></script>
+<script>
+    $(document).ready(function(){ 
+        var myscroll;
+        myscroll = new iScroll("scroll", {
+            snap:true,
+            momentum: false,
+            hScrollbar: false,
+            vScrollbar: false,
+        });  
+
+        $('#samsumg').tap(function(){
+            window.location.href="http://item.yixun.com/item-680734.html?YTAG=3.21012010#custombrowser";
+            setTimeout(function(){
+                window.location.href="adclick:三星"; 
+            },100)
+        })
+        $('#lenovo').tap(function(){
+            window.location.href="http://shop.lenovo.com.cn/product-17470.html#custombrowser";
+            setTimeout(function(){
+                window.location.href="adclick:联想"; 
+            },100)
+        })
+    });
+</script>
+</html>
